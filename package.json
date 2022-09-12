@@ -25,6 +25,10 @@
     "eslint": "eslint --ext .js,.jsx,.ts,.tsx src",
     "eslint-fix": "npm run lint:es -- --fix"
   },
+
+
+
+
   "eslintConfig": {
     "extends": [
       "react-app",
