@@ -1,0 +1,73 @@
+@import url(../Common/Common.module.css);
+@import url(../Checkbox/Checkbox.module.css);
+@import url(../Input/Input.module.css);
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  background-color: var(--color-day-white);
+  box-shadow: 0 0.5rem 1.5rem var(--dropdown-shadow),
+    0 0.25rem 0.5rem var(--dropdown-shadow),
+    0 0.125rem 0.125rem var(--dropdown-shadow);
+  width: 10rem;
+  box-sizing: border-box;
+}
+
+.dropdown_withList {
+  padding: 0.5rem 0;
+}
+
+.dropdown_default {
+  padding: 1rem;
+  align-items: stretch;
+}
+
+.dropdown_default {
+  padding: 1rem;
+  align-items: stretch;
+}
+
+.dropdown_default button {
+  margin-bottom: 0.5rem;
+}
+
+.dropdown_default button:last-child {
+  margin-bottom: 0;
+}
+
+.dropdown__list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown__title {
+  display: flex;
+  align-self: flex-start;
+  font-size: inherit;
+  line-height: inherit;
+  font-family: inherit;
+  margin-bottom: 0.5rem;
+  color: var(--color-day-black);
+}
+
+.dropdown__item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 2rem;
+  padding: 0.5rem 3rem 0.5rem 1rem;
+  background-color: inherit;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.dropdown__item:hover {
+  background-color: var(--color-day-light-blue);
+}
+
+.dropdown__item:active {
+  background-color: var(--color-blue);
+}

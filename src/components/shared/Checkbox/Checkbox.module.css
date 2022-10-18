@@ -1,0 +1,65 @@
+@import url(../Common/Common.module.css);
+
+.checkbox {
+  display: flex;
+}
+
+.checkbox_withText .checkbox__text {
+  display: flex;
+  margin-left: 0.5rem;
+}
+
+.checkbox__label {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+}
+
+.checkbox__icon {
+  position: absolute;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  width: 1rem;
+  height: 1rem;
+  fill: var(--color-day-white-fixed);
+  transition: opacity 0.25s ease-in;
+}
+
+.checkbox__text {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  line-height: inherit;
+  font-size: inherit;
+  color: var(--color-day-black);
+}
+
+.checkbox__area {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  background-color: var(--color-day-white);
+  border: 0.0625rem solid var(--color-day-light-blue);
+  border-radius: 0.125rem;
+  box-sizing: border-box;
+}
+
+.checkbox__area:active {
+  background-color: var(--color-day-light-blue);
+}
+
+.checkbox__area:checked {
+  background-color: var(--color-blue);
+  border-color: var(--color-blue);
+}
+
+.checkbox__area:checked ~ .checkbox__icon {
+  opacity: 1;
+}
+
+.checkbox__area:checked ~ .checkbox__text {
+  color: var(--color-blue);
+}

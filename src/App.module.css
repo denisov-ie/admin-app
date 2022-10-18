@@ -1,0 +1,11 @@
+@import url(components/shared/Common/Common.module.css);
+
+body {
+  background-color: var(--color-day-white);
+}
+
+.page__wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 3rem 0 3rem;
+}
