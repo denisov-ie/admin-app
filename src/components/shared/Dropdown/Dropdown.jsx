@@ -1,5 +1,4 @@
 import classnames from "classnames";
-import _ from "lodash";
 import styles from "./Dropdown.module.css";
 
 export const dropdownStyles = {
@@ -19,6 +18,7 @@ function Dropdown({
     [styles.dropdown_default]: style === styles.dropdown_default,
     [className]: !!className,
   });
+  const keys = children.map((child, index) => index);
 
   return (
     <div className={classNames} {...props}>
@@ -26,8 +26,8 @@ function Dropdown({
       {style === dropdownStyles.default && children}
       {style === dropdownStyles.list && (
         <ul className={styles.dropdown__list}>
-          {children.map((child) => (
-            <label key={_.uniqueId("dropdown-item-")}>
+          {children.map((child, index) => (
+            <label key={keys[index]}>
               <li className={styles.dropdown__item}>{child}</li>
             </label>
           ))}
