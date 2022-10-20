@@ -1,4 +1,4 @@
-@import url(components/shared/Common/Common.module.css);
+@import url('../../shared/Common/Common.module.css');
 
 body {
   background-color: var(--color-day-white);

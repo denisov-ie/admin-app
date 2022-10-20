@@ -4,17 +4,17 @@ import styles from "./ThemeSwitch.module.css";
 import Dropdown, {
   DropdownItemDivider,
   DropdownSingleItem,
-} from "../../../shared/Dropdown/Dropdown";
+} from "../../shared/Dropdown/Dropdown";
 import Button, {
   BUTTON_COLOR as color,
   BUTTON_SIZE as size,
-} from "../../../shared/Button/Button";
-import { ICON_TYPE as icon } from "../../../shared/Icon/Icon";
+} from "../../shared/Button/Button";
+import { ICON_TYPE as icon } from "../../shared/Icon/Icon";
 import {
   COLOR_THEMES as themes,
   isDarkTheme,
   ThemeContext,
-} from "../../../shared/ThemeContext/ThemeContext";
+} from "../../shared/ThemeContext/ThemeContext";
 
 function ThemeSwitch({ className }) {
   const { theme, toggleTheme } = useContext(ThemeContext);

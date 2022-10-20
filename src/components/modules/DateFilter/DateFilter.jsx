@@ -3,7 +3,7 @@ import styles from "./DateFilter.module.css";
 import Input, {
   DEFAULT_PREFIX as prefix,
   INPUT_STYLE as input,
-} from "../../../shared/Input/Input";
+} from "../../shared/Input/Input";
 
 function DateFilter({ className }) {
   const classNames = classnames(styles._, {

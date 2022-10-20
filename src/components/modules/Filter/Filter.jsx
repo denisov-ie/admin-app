@@ -1,4 +1,3 @@
-import { useState } from "react";
 import classnames from "classnames";
 import Button, {
   BUTTON_COLOR as color,
@@ -7,39 +6,53 @@ import Button, {
 import Searchbar from "../../shared/Searchbar/Searchbar";
 import { ICON_TYPE as icon } from "../../shared/Icon/Icon";
 import styles from "./Filter.module.css";
-import DateFilter from "./DateFilter/DateFilter";
-import StateFilter from "./StateFilter/StateFilter";
-import AmountFilter from "./AmountFilter/AmountFilter";
+import DateFilter from "../DateFilter/DateFilter";
+import StateFilter from "../StateFilter/StateFilter";
+import AmountFilter from "../AmountFilter/AmountFilter";
 
-function Filter() {
-  const [isActive, setIsActive] = useState(false);
+const noop = () => {};
 
-  const handleShowExtendedFilters = () => {
-    setIsActive((current) => !current);
-  };
+function Filter({
+  isActive,
+  onShowFilterButtonClick = noop,
+  onResetButtonClick = noop,
+  searchValue,
+  onSearchbarChange = noop,
+  className,
+}) {
+  //
+  const blockClass = classnames(styles._, className);
+  const buttonResetClass = classnames({
+    [styles.hidden]: !isActive,
+  });
 
+  // render
   return (
-    <div className={styles._}>
+    <div className={blockClass}>
       <div className={styles.mainBlock}>
         <div className={styles.leftBlock}>
           <div className={styles.searchbarWrapper}>
-            <Searchbar placeholder="Номер заказа или ФИО" />
+            <Searchbar
+              value={searchValue}
+              onChange={onSearchbarChange}
+              placeholder="Номер заказа или ФИО"
+            />
           </div>
+
           <Button
             color={isActive ? color.blue : color.blueReverse}
             size={size.medium}
             text="Фильтры"
             icon={icon.filter}
-            onClick={handleShowExtendedFilters}
+            onClick={onShowFilterButtonClick}
           />
           <Button
-            className={classnames({
-              [styles.hidden]: !isActive,
-            })}
+            className={buttonResetClass}
             color={color.blueReverse}
             size={size.medium}
             text="Сбросить фильтры"
             id="filterResetButton"
+            onClick={onResetButtonClick}
           />
         </div>
         <Button
@@ -49,21 +62,20 @@ function Filter() {
           icon={icon.refresh}
         />
       </div>
-      <div
-        className={classnames(styles.extendedBlock, {
-          [styles.hidden]: !isActive,
-        })}
-      >
-        <DateFilter className={styles.dateFilter} />
-        <StateFilter className={styles.stateFilter} />
-        <AmountFilter className={styles.amountFilter} />
-        <Button
-          className={styles.applyFilterButton}
-          color={color.blueReverse}
-          size={size.medium}
-          text="Применить"
-        />
-      </div>
+
+      {isActive && (
+        <div className={styles.extendedBlock}>
+          <DateFilter className={styles.dateFilter} />
+          <StateFilter className={styles.stateFilter} />
+          <AmountFilter className={styles.amountFilter} />
+          <Button
+            className={styles.applyFilterButton}
+            color={color.blueReverse}
+            size={size.medium}
+            text="Применить"
+          />
+        </div>
+      )}
     </div>
   );
 }

@@ -48,3 +48,7 @@
 .applyFilterButton {
   padding: 0.5rem 0.5625rem;
 }
+
+.hidden {
+  display: none;
+}
