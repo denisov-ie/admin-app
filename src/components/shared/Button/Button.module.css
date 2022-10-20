@@ -15,6 +15,11 @@
   color: var(--color-day-white);
 }
 
+.button_red {
+  background-color: var(--color-red);
+  color: var(--color-day-white);
+}
+
 .button_blue .button__icon {
   stroke: var(--color-day-white);
   fill: var(--color-day-white);

@@ -14,13 +14,3 @@
 .header__title {
   color: var(--color-day-black);
 }
-
-.header__themeDropdownWrapper {
-  position: absolute;
-  top: 2.25rem;
-  right: 0;
-}
-
-.header__themeDropdownWrapper_hidden {
-  display: none;
-}

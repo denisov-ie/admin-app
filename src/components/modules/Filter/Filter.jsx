@@ -1,42 +1,34 @@
 import { useState } from "react";
 import classnames from "classnames";
 import Button, {
-  buttonColors as color,
-  buttonSizes as size,
+  BUTTON_COLOR as color,
+  BUTTON_SIZE as size,
 } from "../../shared/Button/Button";
 import Searchbar from "../../shared/Searchbar/Searchbar";
-import Input, { inputStyles } from "../../shared/Input/Input";
-import { iconTypes as icon } from "../../shared/Icon/Icon";
+import { ICON_TYPE as icon } from "../../shared/Icon/Icon";
 import styles from "./Filter.module.css";
-import Dropdown, {
-  dropdownStyles as dropdown,
-} from "../../shared/Dropdown/Dropdown";
-import Checkbox from "../../shared/Checkbox/Checkbox";
+import DateFilter from "./DateFilter/DateFilter";
+import StateFilter from "./StateFilter/StateFilter";
+import AmountFilter from "./AmountFilter/AmountFilter";
 
-function Filter({ ...props }) {
+function Filter() {
   const [isActive, setIsActive] = useState(false);
 
   const handleShowExtendedFilters = () => {
     setIsActive((current) => !current);
   };
 
-  const [isVisible, setIsVisible] = useState(false);
-
-  const handleShowStateDropdown = () => {
-    setIsVisible((current) => !current);
-  };
-
   return (
-    <div className={styles.filter} {...props}>
+    <div className={styles.filter}>
       <div className={styles.filter__mainBlock}>
         <div className={styles.filter__leftBlock}>
           <div className={styles.filter__searchbarWrapper}>
-            <Searchbar placeholderText="Номер заказа или ФИО" />
+            <Searchbar placeholder="Номер заказа или ФИО" />
           </div>
           <Button
-            color={isActive ? color.buttonBlue : color.buttonBlueReverse}
-            size={size.buttonMedium}
-            buttonText="Фильтры"
+            color={isActive ? color.blue : color.blueReverse}
+            size={size.medium}
+            text="Фильтры"
             icon={icon.filter}
             onClick={handleShowExtendedFilters}
           />
@@ -44,16 +36,16 @@ function Filter({ ...props }) {
             className={classnames({
               [styles.filter__clearFilterButton_hidden]: !isActive,
             })}
-            color={color.buttonBlueReverse}
-            size={size.buttonMedium}
-            buttonText="Сбросить фильтры"
+            color={color.blueReverse}
+            size={size.medium}
+            text="Сбросить фильтры"
             id="filterResetButton"
           />
         </div>
         <Button
-          color={color.buttonBlueReverse}
-          size={size.buttonMedium}
-          buttonText="Загрузка"
+          color={color.blueReverse}
+          size={size.medium}
+          text="Загрузка"
           icon={icon.refresh}
         />
       </div>
@@ -62,59 +54,14 @@ function Filter({ ...props }) {
           [styles.filter__extendedBlock_hidden]: !isActive,
         })}
       >
-        <div className={styles.filter__inputDate}>
-          <Input
-            style={inputStyles.default}
-            labelText="Дата оформления"
-            placeholderText="dd.mm.yyyy"
-            annotationText="с"
-          />
-          <Input
-            style={inputStyles.default}
-            placeholderText="dd.mm.yyyy"
-            annotationText="по"
-          />
-        </div>
-        <div className={styles.filter__dropdownState}>
-          <Input
-            style={inputStyles.dropdown}
-            labelText="Статус заказа"
-            placeholderText="Любой"
-            onClick={handleShowStateDropdown}
-          />
-          <div
-            className={classnames(styles.filter__dropdownStateWrapper, {
-              [styles.filter__dropdownStateWrapper_hidden]: !isVisible,
-            })}
-          >
-            <Dropdown style={dropdown.list}>
-              <Checkbox checkboxText="Новый" />
-              <Checkbox checkboxText="Рассчет" />
-              <Checkbox checkboxText="Подтвержен" />
-              <Checkbox checkboxText="Отложен" />
-              <Checkbox checkboxText="Выполнен" />
-              <Checkbox checkboxText="Отменен" />
-            </Dropdown>
-          </div>
-        </div>
-        <div className={styles.filter__inputOrderAmount}>
-          <Input
-            style={inputStyles.default}
-            labelText="Сумма заказа"
-            placeholderText="₽"
-            annotationText="от"
-          />
-          <Input
-            style={inputStyles.default}
-            placeholderText="₽"
-            annotationText="до"
-          />
-        </div>
+        <DateFilter className={styles.filter__dateFilter} />
+        <StateFilter className={styles.filter__stateFilter} />
+        <AmountFilter className={styles.filter__amountFilter} />
         <Button
           className={styles.filter__applyFilterButton}
-          color={color.buttonBlueReverse}
-          size={size.buttonMedium}
-          buttonText="Применить"
+          color={color.blueReverse}
+          size={size.medium}
+          text="Применить"
         />
       </div>
     </div>

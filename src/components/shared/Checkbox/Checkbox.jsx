@@ -1,10 +1,11 @@
 import classnames from "classnames";
-import Icon, { iconTypes as icon } from "../Icon/Icon";
+import Icon, { ICON_TYPE as icon } from "../Icon/Icon";
 import styles from "./Checkbox.module.css";
 
-function Checkbox({ className, checkboxText, defaultChecked, ...props }) {
+function Checkbox({ className, text, name, checked, textOnly, ...props }) {
   const classNames = classnames(styles.checkbox, {
-    [styles.checkbox_withText]: checkboxText,
+    [styles.checkbox_withText]: text,
+    [styles.checkbox_withTextOnly]: textOnly,
     [className]: !!className,
   });
 
@@ -14,12 +15,11 @@ function Checkbox({ className, checkboxText, defaultChecked, ...props }) {
         <input
           className={styles.checkbox__area}
           type="checkbox"
-          defaultChecked={defaultChecked}
+          name={name}
+          checked={checked}
         />
         <Icon name={icon.checkmark} className={styles.checkbox__icon} />
-        {checkboxText && (
-          <span className={styles.checkbox__text}>{checkboxText}</span>
-        )}
+        {text && <span className={styles.checkbox__text}>{text}</span>}
       </label>
     </div>
   );

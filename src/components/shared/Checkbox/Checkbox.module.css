@@ -9,6 +9,19 @@
   margin-left: 0.5rem;
 }
 
+.checkbox_withTextOnly .checkbox__area {
+  display: none;
+}
+
+.checkbox_withTextOnly .checkbox__icon {
+  display: none;
+}
+
+.checkbox_withTextOnly .checkbox__text {
+  display: flex;
+  margin-left: 0;
+}
+
 .checkbox__label {
   position: relative;
   display: flex;

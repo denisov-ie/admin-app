@@ -1,0 +1,10 @@
+.dateFilter {
+  display: inherit;
+  flex-direction: row;
+  align-items: flex-end;
+  width: 18rem;
+}
+
+.dateFilter > :first-child {
+  margin-right: 0.25rem;
+}

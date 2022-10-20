@@ -1,0 +1,10 @@
+.amountFilter {
+  display: inherit;
+  flex-direction: row;
+  align-items: flex-end;
+  width: 16rem;
+}
+
+.amountFilter > :first-child {
+  margin-right: 0.25rem;
+}

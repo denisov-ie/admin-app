@@ -13,7 +13,7 @@ import { ReactComponent as IconVArrow } from "./assets/v_arrow.svg";
 import { ReactComponent as IconXLarge } from "./assets/x-large.svg";
 import { ReactComponent as IconXMedium } from "./assets/x-medium.svg";
 
-export const iconTypes = {
+export const ICON_TYPE = {
   abort: IconAbort,
   bin: IconBin,
   checkmark: IconCheckmark,

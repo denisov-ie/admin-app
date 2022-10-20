@@ -19,6 +19,10 @@
   color: var(--color-day-black);
 }
 
+.input__labelDivider {
+  margin-bottom: 0.5rem;
+}
+
 .input__field {
   display: flex;
   justify-content: space-between;
@@ -28,12 +32,41 @@
   border: 0.0625rem solid var(--color-blue);
   border-radius: 0.25rem;
   padding: 0.25rem 0.25rem 0.25rem 0.5rem;
-  margin-top: 0.5rem;
   box-sizing: border-box;
 }
 
-.input__annotation {
-  padding-right: 0.25rem;
+.input__prefix,
+.input__postfix {
+  display: flex;
+}
+
+.input__prefix_textDefault {
+  margin-right: 0.25rem;
+}
+
+.input__postfix_textDefault {
+  margin-right: 0.25rem;
+  margin-left: 0.25rem;
+}
+
+.input__prefix_iconDefault {
+  display: block;
+  height: 1rem;
+  width: 1rem;
+  min-width: 1rem;
+  stroke: var(--color-blue);
+  fill: var(--color-blue);
+  margin-right: 0.5rem;
+}
+
+.input__postfix_iconDefault {
+  display: block;
+  height: 1rem;
+  width: 1rem;
+  min-width: 1rem;
+  stroke: var(--color-day-light-blue);
+  fill: var(--color-day-light-blue);
+  padding: 0.25rem;
 }
 
 .input__area {
@@ -70,18 +103,8 @@
   margin: 0 auto;
 }
 
-.input__iconVArrow {
-  display: block;
-  height: 1rem;
-  width: 1rem;
-  min-width: 1rem;
-  fill: var(--color-day-light-blue);
-  padding: 0.25rem;
-  margin: 0 auto;
-}
-
 .input_dropdown:hover .input__iconVArrow {
-  fill: var(--color-day-dark-blue);
+  fill: var(--color-blue);
   transition: fill 0.25s ease-in;
 }
 
@@ -103,6 +126,6 @@
 }
 
 .input__button:hover .input__iconCross {
-  stroke: var(--color-day-dark-blue);
+  stroke: var(--color-blue);
   transition: stroke 0.25s ease-in;
 }

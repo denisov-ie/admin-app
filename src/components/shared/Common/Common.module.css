@@ -1,24 +1,30 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu&subset=cyrillic,latin);
 
 :root {
-  --color-day-white: #ffffff;
   --color-day-white-fixed: #ffffff;
-  --color-day-light-blue: #bad8f5;
-  --color-day-white-blue: #ebf0f5;
   --color-day-dark-blue: #287ed5;
   --color-day-medium-blue: #1e65a4;
-  --color-day-black: #000000;
   --color-day-medium-black: #1c1c1c;
   --color-day-light-black: #606060;
   --color-blue: #459df5;
   --color-red: #f53152;
   --color-orange: #ff8c56;
   --color-green: #0fb864;
-  --color-night-black: #bcc4cc;
-  --color-night-white: #2b2d33;
-  --color-night-light-blue: #454e52;
-  --color-night-white-blue: #171b1f;
   --dropdown-shadow: rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="light"] {
+  --color-day-white: #ffffff;
+  --color-day-black: #000000;
+  --color-day-light-blue: #bad8f5;
+  --color-day-white-blue: #ebf0f5;
+}
+
+:root[data-theme="dark"] {
+  --color-day-white: #2b2d33;
+  --color-day-black: #bcc4cc;
+  --color-day-light-blue: #454e52;
+  --color-day-white-blue: #171b1f;
 }
 
 body {

@@ -43,44 +43,10 @@
   display: none;
 }
 
-.filter__inputDate {
-  display: inherit;
-  flex-direction: row;
-  align-items: flex-end;
-  width: 18rem;
+.filter__dateFilter,
+.filter__stateFilter,
+.filter__amountFilter {
   margin-right: 1rem;
-}
-
-.filter__inputDate > :first-child {
-  margin-right: 0.25rem;
-}
-
-.filter__dropdownState {
-  position: relative;
-  width: 12rem;
-  margin-right: 1rem;
-}
-
-.filter__dropdownStateWrapper {
-  position: absolute;
-  top: 3.75rem;
-  right: 0;
-}
-
-.filter__dropdownStateWrapper_hidden {
-  display: none;
-}
-
-.filter__inputOrderAmount {
-  display: inherit;
-  flex-direction: row;
-  align-items: flex-end;
-  width: 16rem;
-  margin-right: 1rem;
-}
-
-.filter__inputOrderAmount > :first-child {
-  margin-right: 0.25rem;
 }
 
 .filter__applyFilterButton {

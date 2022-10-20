@@ -1,35 +1,49 @@
 import classnames from "classnames";
 import { useState } from "react";
-import Icon, { iconTypes as icon } from "../Icon/Icon";
+import Icon, { ICON_TYPE as icon } from "../Icon/Icon";
 import styles from "./Input.module.css";
 
-export const inputStyles = {
-  default: null,
-  disabled: styles.input_disabled,
-  incorrect: styles.input_incorrect,
-  dropdown: styles.input_dropdown,
+function Component({ element, className }) {
+  return <div className={className}>{element}</div>;
+}
+
+export const INPUT_STYLE = {
+  default: "default",
+  incorrect: "incorrect",
 };
 
-function isDisabled(style) {
-  return style === inputStyles.disabled;
-}
+export const DEFAULT_PREFIX = {
+  text: (text, className = styles.input__prefix_textDefault) => (
+    <span className={className}>{text}</span>
+  ),
+  icon: (iconName, className = styles.input__prefix_iconDefault) => (
+    <Icon name={iconName} className={className} />
+  ),
+};
 
-function isDropdown(style) {
-  return style === inputStyles.dropdown;
-}
+export const DEFAULT_POSTFIX = {
+  text: (text, className = styles.input__postfix_textDefault) => (
+    <span className={className}>{text}</span>
+  ),
+  icon: (iconName, className = styles.input__postfix_iconDefault) => (
+    <Icon name={iconName} className={className} />
+  ),
+};
 
 function Input({
   className,
-  labelText,
-  placeholderText,
-  annotationText,
-  style = inputStyles.default,
+  label,
+  placeholder,
+  prefix,
+  postfix,
+  hideReset,
+  style = INPUT_STYLE.default,
+  disabled,
   ...props
 }) {
   const classNames = classnames(styles.input, {
-    [styles.input_disabled]: style === inputStyles.disabled,
-    [styles.input_incorrect]: style === inputStyles.incorrect,
-    [styles.input_dropdown]: style === inputStyles.dropdown,
+    [styles.input_disabled]: disabled,
+    [styles.input_incorrect]: !disabled && style === INPUT_STYLE.incorrect,
     [className]: !!className,
   });
 
@@ -46,19 +60,22 @@ function Input({
   return (
     <div className={classNames} {...props}>
       <label className={styles.input__label}>
-        {labelText}
+        {label && <div className={styles.input__labelDivider}>{label}</div>}
         <div className={styles.input__field}>
-          {annotationText && (
-            <span className={styles.input__annotation}>{annotationText}</span>
+          {prefix && (
+            <Component element={prefix} className={styles.input__prefix} />
           )}
           <input
             className={styles.input__area}
-            placeholder={!isDisabled(style) ? placeholderText : null}
+            placeholder={placeholder}
             onChange={handleInputChange}
-            disabled={isDisabled(style) || isDropdown(style)}
+            disabled={disabled}
             value={message}
           />
-          {!isDisabled(style) && !isDropdown(style) && (
+          {postfix && (
+            <Component element={postfix} className={styles.input__postfix} />
+          )}
+          {!disabled && !hideReset && (
             <button
               className={classnames(styles.input__button, {
                 [styles.input__button_hidden]: message.length <= 0,
@@ -68,11 +85,8 @@ function Input({
               <Icon name={icon.xLarge} className={styles.input__iconCross} />
             </button>
           )}
-          {isDisabled(style) && (
+          {disabled && (
             <Icon name={icon.locked} className={styles.input__iconLock} />
-          )}
-          {isDropdown(style) && (
-            <Icon name={icon.vArrow} className={styles.input__iconVArrow} />
           )}
         </div>
       </label>

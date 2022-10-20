@@ -1,17 +1,10 @@
 import classnames from "classnames";
-import Icon, { iconTypes as icon } from "../Icon/Icon";
+import Icon, { ICON_TYPE as icon } from "../Icon/Icon";
 import styles from "./Radio.module.css";
 
-function Radio({
-  className,
-  radioText,
-  groupName,
-  defaultChecked,
-  textOnly,
-  ...props
-}) {
+function Radio({ className, text, name, value, checked, textOnly, ...props }) {
   const classNames = classnames(styles.radio, {
-    [styles.radio_withText]: radioText,
+    [styles.radio_withText]: text,
     [styles.radio_withTextOnly]: textOnly,
     [className]: !!className,
   });
@@ -22,11 +15,12 @@ function Radio({
         <input
           className={styles.radio__area}
           type="radio"
-          name={groupName}
-          defaultChecked={defaultChecked}
+          name={name}
+          value={value}
+          checked={checked}
         />
         <Icon name={icon.dot} className={styles.radio__icon} />
-        {radioText && <span className={styles.radio__text}>{radioText}</span>}
+        {text && <span className={styles.radio__text}>{text}</span>}
       </label>
     </div>
   );
