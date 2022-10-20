@@ -1,29 +1,29 @@
 @import url(../Common/Common.module.css);
 
-.input {
+._ {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.input_disabled .input__field {
+.disabled .field {
   background-color: var(--color-day-light-blue);
 }
 
-.input_incorrect .input__field {
+.incorrect .field {
   border-color: var(--color-red);
 }
 
-.input__label {
+.label {
   line-height: inherit;
   color: var(--color-day-black);
 }
 
-.input__labelDivider {
+.labelDivider {
   margin-bottom: 0.5rem;
 }
 
-.input__field {
+.field {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,21 +35,21 @@
   box-sizing: border-box;
 }
 
-.input__prefix,
-.input__postfix {
+.prefix,
+.postfix {
   display: flex;
 }
 
-.input__prefix_textDefault {
+.prefixTextDefault {
   margin-right: 0.25rem;
 }
 
-.input__postfix_textDefault {
+.postfixTextDefault {
   margin-right: 0.25rem;
   margin-left: 0.25rem;
 }
 
-.input__prefix_iconDefault {
+.prefixIconDefault {
   display: block;
   height: 1rem;
   width: 1rem;
@@ -59,7 +59,7 @@
   margin-right: 0.5rem;
 }
 
-.input__postfix_iconDefault {
+.postfixIconDefault {
   display: block;
   height: 1rem;
   width: 1rem;
@@ -69,7 +69,7 @@
   padding: 0.25rem;
 }
 
-.input__area {
+.area {
   display: flex;
   border: 0;
   padding: 0;
@@ -81,11 +81,11 @@
   width: 100%;
 }
 
-.input__area::placeholder {
+.area::placeholder {
   color: var(--color-day-light-blue);
 }
 
-.input__iconCross {
+.iconCross {
   display: block;
   height: 0.5625rem;
   width: 0.5625rem;
@@ -93,7 +93,7 @@
   stroke-width: 0.125rem;
 }
 
-.input__iconLock {
+.iconLock {
   display: block;
   height: 1rem;
   width: 1rem;
@@ -103,12 +103,13 @@
   margin: 0 auto;
 }
 
-.input_dropdown:hover .input__iconVArrow {
+.field:hover .postfixIconDefault {
   fill: var(--color-blue);
+  stroke: var(--color-blue);
   transition: fill 0.25s ease-in;
 }
 
-.input__button {
+.button {
   display: flex;
   padding: 0.25rem;
   height: 1.5rem;
@@ -121,11 +122,11 @@
   cursor: pointer;
 }
 
-.input__button_hidden {
+.hidden {
   display: none;
 }
 
-.input__button:hover .input__iconCross {
+.button:hover .iconCross {
   stroke: var(--color-blue);
   transition: stroke 0.25s ease-in;
 }

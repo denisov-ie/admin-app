@@ -1,6 +1,6 @@
 @import url(../Common/Common.module.css);
 
-.button {
+._ {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,90 +10,90 @@
   cursor: pointer;
 }
 
-.button_blue {
+.blue {
   background-color: var(--color-blue);
   color: var(--color-day-white);
 }
 
-.button_red {
+.red {
   background-color: var(--color-red);
   color: var(--color-day-white);
 }
 
-.button_blue .button__icon {
+.blue .icon {
   stroke: var(--color-day-white);
   fill: var(--color-day-white);
 }
 
-.button_blueReverse {
+.blueReverse {
   background-color: transparent;
   color: var(--color-blue);
 }
 
-.button_blueReverse .button__icon {
+.blueReverse .icon {
   stroke: var(--color-blue);
   fill: var(--color-blue);
 }
 
-.button_blackReverse {
+.blackReverse {
   background-color: transparent;
   color: var(--color-day-black);
 }
 
-.button_blackReverse .button__icon {
+.blackReverse .icon {
   stroke: var(--color-day-black);
   fill: var(--color-day-black);
 }
 
-.button_medium {
+.medium {
   height: 2rem;
   padding: 0.5rem 1rem 0.5rem 1rem;
 }
 
-.button_medium .button__icon + .button__text {
+.medium .icon + .text {
   margin-left: 0.5rem;
 }
 
-.button_medium.button_iconOnly {
+.medium.iconOnly {
   padding: 0.5rem;
 }
 
-.button_small {
+.small {
   height: 1.5rem;
   padding: 0.25rem 0.5rem 0.25rem 0.5rem;
 }
 
-.button_small .button__icon + .button__text {
+.small .icon + .text {
   margin-left: 0.25rem;
 }
 
-.button_small.button_iconOnly {
+.small.iconOnly {
   padding: 0.25rem;
 }
 
-.button:hover {
+._:hover {
   box-shadow: 0 0 0 0.0625rem var(--color-day-dark-blue);
 }
 
-.button:active {
+._:active {
   box-shadow: 0 0 0 0.0625rem var(--color-day-medium-blue);
 }
 
-.button_blackReverse.button:hover {
+.blackReverse._:hover {
   box-shadow: 0 0 0 0.0625rem var(--color-day-light-black);
 }
 
-.button_blackReverse.button:active {
+.blackReverse._:active {
   box-shadow: 0 0 0 0.0625rem var(--color-day-medium-black);
 }
 
-.button__icon {
+.icon {
   display: flex;
   width: 1rem;
   height: 1rem;
 }
 
-.button__text {
+.text {
   height: 1rem;
   line-height: inherit;
   font: inherit;

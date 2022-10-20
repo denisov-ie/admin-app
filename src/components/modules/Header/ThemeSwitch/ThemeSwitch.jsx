@@ -44,8 +44,8 @@ function ThemeSwitch({ className }) {
         onClick={handleShowThemeDropdown}
       />
       <div
-        className={classnames(styles.themeDropdownWrapper, {
-          [styles.themeDropdownWrapper_hidden]: !isVisible,
+        className={classnames(styles.wrapper, {
+          [styles.hidden]: !isVisible,
         })}
       >
         <Dropdown title="Выберите тему">

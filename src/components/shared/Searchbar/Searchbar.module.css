@@ -1,17 +1,12 @@
 @import url(../Common/Common.module.css);
 
-.searchbar {
+._ {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.searchbar__label {
-  line-height: inherit;
-  color: var(--color-day-black);
-}
-
-.searchbar__iconSearch {
+.iconSearch {
   width: 1rem;
   height: 1rem;
   min-width: 1rem;

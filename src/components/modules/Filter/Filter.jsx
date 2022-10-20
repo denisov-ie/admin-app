@@ -19,10 +19,10 @@ function Filter() {
   };
 
   return (
-    <div className={styles.filter}>
-      <div className={styles.filter__mainBlock}>
-        <div className={styles.filter__leftBlock}>
-          <div className={styles.filter__searchbarWrapper}>
+    <div className={styles._}>
+      <div className={styles.mainBlock}>
+        <div className={styles.leftBlock}>
+          <div className={styles.searchbarWrapper}>
             <Searchbar placeholder="Номер заказа или ФИО" />
           </div>
           <Button
@@ -34,7 +34,7 @@ function Filter() {
           />
           <Button
             className={classnames({
-              [styles.filter__clearFilterButton_hidden]: !isActive,
+              [styles.hidden]: !isActive,
             })}
             color={color.blueReverse}
             size={size.medium}
@@ -50,15 +50,15 @@ function Filter() {
         />
       </div>
       <div
-        className={classnames(styles.filter__extendedBlock, {
-          [styles.filter__extendedBlock_hidden]: !isActive,
+        className={classnames(styles.extendedBlock, {
+          [styles.hidden]: !isActive,
         })}
       >
-        <DateFilter className={styles.filter__dateFilter} />
-        <StateFilter className={styles.filter__stateFilter} />
-        <AmountFilter className={styles.filter__amountFilter} />
+        <DateFilter className={styles.dateFilter} />
+        <StateFilter className={styles.stateFilter} />
+        <AmountFilter className={styles.amountFilter} />
         <Button
-          className={styles.filter__applyFilterButton}
+          className={styles.applyFilterButton}
           color={color.blueReverse}
           size={size.medium}
           text="Применить"

@@ -13,19 +13,19 @@ export const INPUT_STYLE = {
 };
 
 export const DEFAULT_PREFIX = {
-  text: (text, className = styles.input__prefix_textDefault) => (
+  text: (text, className = styles.prefixTextDefault) => (
     <span className={className}>{text}</span>
   ),
-  icon: (iconName, className = styles.input__prefix_iconDefault) => (
+  icon: (iconName, className = styles.prefixIconDefault) => (
     <Icon name={iconName} className={className} />
   ),
 };
 
 export const DEFAULT_POSTFIX = {
-  text: (text, className = styles.input__postfix_textDefault) => (
+  text: (text, className = styles.postfixTextDefault) => (
     <span className={className}>{text}</span>
   ),
-  icon: (iconName, className = styles.input__postfix_iconDefault) => (
+  icon: (iconName, className = styles.postfixIconDefault) => (
     <Icon name={iconName} className={className} />
   ),
 };
@@ -41,9 +41,9 @@ function Input({
   disabled,
   ...props
 }) {
-  const classNames = classnames(styles.input, {
-    [styles.input_disabled]: disabled,
-    [styles.input_incorrect]: !disabled && style === INPUT_STYLE.incorrect,
+  const classNames = classnames(styles._, {
+    [styles.disabled]: disabled,
+    [styles.incorrect]: !disabled && style === INPUT_STYLE.incorrect,
     [className]: !!className,
   });
 
@@ -59,35 +59,31 @@ function Input({
 
   return (
     <div className={classNames} {...props}>
-      <label className={styles.input__label}>
-        {label && <div className={styles.input__labelDivider}>{label}</div>}
-        <div className={styles.input__field}>
-          {prefix && (
-            <Component element={prefix} className={styles.input__prefix} />
-          )}
+      <label className={styles.label}>
+        {label && <div className={styles.labelDivider}>{label}</div>}
+        <div className={styles.field}>
+          {prefix && <Component element={prefix} className={styles.prefix} />}
           <input
-            className={styles.input__area}
+            className={styles.area}
             placeholder={placeholder}
             onChange={handleInputChange}
             disabled={disabled}
             value={message}
           />
           {postfix && (
-            <Component element={postfix} className={styles.input__postfix} />
+            <Component element={postfix} className={styles.postfix} />
           )}
           {!disabled && !hideReset && (
             <button
-              className={classnames(styles.input__button, {
-                [styles.input__button_hidden]: message.length <= 0,
+              className={classnames(styles.button, {
+                [styles.hidden]: message.length <= 0,
               })}
               onClick={handleClearButtonClick}
             >
-              <Icon name={icon.xLarge} className={styles.input__iconCross} />
+              <Icon name={icon.xLarge} className={styles.iconCross} />
             </button>
           )}
-          {disabled && (
-            <Icon name={icon.locked} className={styles.input__iconLock} />
-          )}
+          {disabled && <Icon name={icon.locked} className={styles.iconLock} />}
         </div>
       </label>
     </div>

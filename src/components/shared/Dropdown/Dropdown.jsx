@@ -3,28 +3,28 @@ import styles from "./Dropdown.module.css";
 
 export function DropdownListItem({ children }) {
   return (
-    <div className={styles.dropdown__listItem}>
-      <label className={styles.dropdown__item}>{children}</label>
+    <div className={styles.listItem}>
+      <label className={styles.item}>{children}</label>
     </div>
   );
 }
 
 export function DropdownSingleItem({ children }) {
-  return <div className={styles.dropdown__singleItem}>{children}</div>;
+  return <div className={styles.singleItem}>{children}</div>;
 }
 
 export function DropdownItemDivider() {
-  return <div className={styles.dropdown__itemDivider} />;
+  return <div className={styles.itemDivider} />;
 }
 
 function Dropdown({ className, title, children }) {
-  const classNames = classnames(styles.dropdown, {
+  const classNames = classnames(styles._, {
     [className]: !!className,
   });
 
   return (
     <div className={classNames}>
-      {title && <span className={styles.dropdown__title}>{title}</span>}
+      {title && <span className={styles.title}>{title}</span>}
       {children}
     </div>
   );

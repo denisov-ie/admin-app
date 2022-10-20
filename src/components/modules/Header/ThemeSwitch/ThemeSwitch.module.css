@@ -1,9 +1,9 @@
-.themeDropdownWrapper {
+.wrapper {
   position: absolute;
   top: 2.25rem;
   right: 0;
 }
 
-.themeDropdownWrapper_hidden {
+.hidden {
   display: none;
 }

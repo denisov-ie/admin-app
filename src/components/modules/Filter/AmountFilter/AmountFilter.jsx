@@ -6,7 +6,7 @@ import Input, {
 } from "../../../shared/Input/Input";
 
 function AmountFilter({ className }) {
-  const classNames = classnames(styles.amountFilter, {
+  const classNames = classnames(styles._, {
     [className]: !!className,
   });
 

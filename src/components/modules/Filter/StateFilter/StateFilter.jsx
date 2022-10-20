@@ -10,7 +10,7 @@ import Dropdown, { DropdownListItem } from "../../../shared/Dropdown/Dropdown";
 import Checkbox from "../../../shared/Checkbox/Checkbox";
 
 function StateFilter({ className }) {
-  const classNames = classnames(styles.stateFilter, {
+  const classNames = classnames(styles._, {
     [className]: !!className,
   });
 
@@ -32,8 +32,8 @@ function StateFilter({ className }) {
         hideReset
       />
       <div
-        className={classnames(styles.stateFilter__wrapper, {
-          [styles.stateFilter__wrapper_hidden]: !isVisible,
+        className={classnames(styles.wrapper, {
+          [styles.hidden]: !isVisible,
         })}
       >
         <Dropdown>

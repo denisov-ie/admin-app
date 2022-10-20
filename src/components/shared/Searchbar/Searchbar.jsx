@@ -7,7 +7,7 @@ import Input, {
 } from "../Input/Input";
 
 function Searchbar({ className, placeholder, ...props }) {
-  const classNames = classnames(styles.searchbar, {
+  const classNames = classnames(styles._, {
     [className]: !!className,
   });
 
@@ -16,7 +16,7 @@ function Searchbar({ className, placeholder, ...props }) {
       <Input
         style={input.default}
         placeholder={placeholder}
-        prefix={prefix.icon(icon.search, styles.searchbar__iconSearch)}
+        prefix={prefix.icon(icon.search, styles.iconSearch)}
       />
     </div>
   );

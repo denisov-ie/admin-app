@@ -1,34 +1,34 @@
 @import url(../../shared/Common/Common.module.css);
 
-.filter {
+._ {
   display: flex;
   flex-direction: column;
   padding-bottom: 2rem;
 }
 
-.filter__mainBlock {
+.mainBlock {
   display: inherit;
   justify-content: space-between;
 }
 
-.filter__leftBlock {
+.leftBlock {
   display: inherit;
   flex-direction: row;
 }
 
-.filter__leftBlock > * {
+.leftBlock > * {
   margin-right: 1rem;
 }
 
-.filter__leftBlock > :last-child {
+.leftBlock > :last-child {
   margin-right: 0;
 }
 
-.filter__searchbarWrapper {
+.searchbarWrapper {
   width: 20rem;
 }
 
-.filter__extendedBlock {
+.extendedBlock {
   display: flex;
   align-items: flex-end;
   box-sizing: border-box;
@@ -39,20 +39,16 @@
   background-color: var(--color-day-white-blue);
 }
 
-.filter__extendedBlock_hidden {
-  display: none;
-}
-
-.filter__dateFilter,
-.filter__stateFilter,
-.filter__amountFilter {
+.dateFilter,
+.stateFilter,
+.amountFilter {
   margin-right: 1rem;
 }
 
-.filter__applyFilterButton {
+.applyFilterButton {
   padding: 0.5rem 0.5625rem;
 }
 
-.filter__clearFilterButton_hidden {
+.hidden {
   display: none;
 }

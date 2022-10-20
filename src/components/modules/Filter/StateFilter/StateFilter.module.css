@@ -1,14 +1,14 @@
-.stateFilter {
+._ {
   position: relative;
   width: 12rem;
 }
 
-.stateFilter__wrapper {
+.wrapper {
   position: absolute;
   top: 3.75rem;
   right: 0;
 }
 
-.stateFilter__wrapper_hidden {
+.hidden {
   display: none;
 }

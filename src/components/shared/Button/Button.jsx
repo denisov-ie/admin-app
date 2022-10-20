@@ -22,21 +22,21 @@ function Button({
   icon,
   ...props
 }) {
-  const classNames = classnames(styles.button, {
-    [styles.button_small]: size === BUTTON_SIZE.small,
-    [styles.button_medium]: size === BUTTON_SIZE.medium,
-    [styles.button_blue]: color === BUTTON_COLOR.blue,
-    [styles.button_red]: color === BUTTON_COLOR.red,
-    [styles.button_blueReverse]: color === BUTTON_COLOR.blueReverse,
-    [styles.button_blackReverse]: color === BUTTON_COLOR.blackReverse,
-    [styles.button_iconOnly]: !text,
+  const classNames = classnames(styles._, {
+    [styles.small]: size === BUTTON_SIZE.small,
+    [styles.medium]: size === BUTTON_SIZE.medium,
+    [styles.blue]: color === BUTTON_COLOR.blue,
+    [styles.red]: color === BUTTON_COLOR.red,
+    [styles.blueReverse]: color === BUTTON_COLOR.blueReverse,
+    [styles.blackReverse]: color === BUTTON_COLOR.blackReverse,
+    [styles.iconOnly]: !text,
     [className]: !!className,
   });
 
   return (
     <button className={classNames} {...props}>
-      {icon && <Icon name={icon} className={styles.button__icon} />}
-      {text && <div className={styles.button__text}>{text}</div>}
+      {icon && <Icon name={icon} className={styles.icon} />}
+      {text && <div className={styles.text}>{text}</div>}
     </button>
   );
 }

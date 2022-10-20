@@ -6,7 +6,7 @@ import Input, {
 } from "../../../shared/Input/Input";
 
 function DateFilter({ className }) {
-  const classNames = classnames(styles.dateFilter, {
+  const classNames = classnames(styles._, {
     [className]: !!className,
   });
 

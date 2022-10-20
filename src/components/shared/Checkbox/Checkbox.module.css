@@ -1,34 +1,34 @@
 @import url(../Common/Common.module.css);
 
-.checkbox {
+._ {
   display: flex;
 }
 
-.checkbox_withText .checkbox__text {
+.withText .text {
   display: flex;
   margin-left: 0.5rem;
 }
 
-.checkbox_withTextOnly .checkbox__area {
+.withTextOnly .area {
   display: none;
 }
 
-.checkbox_withTextOnly .checkbox__icon {
+.withTextOnly .icon {
   display: none;
 }
 
-.checkbox_withTextOnly .checkbox__text {
+.withTextOnly .text {
   display: flex;
   margin-left: 0;
 }
 
-.checkbox__label {
+.label {
   position: relative;
   display: flex;
   cursor: pointer;
 }
 
-.checkbox__icon {
+.icon {
   position: absolute;
   opacity: 0;
   left: 0;
@@ -39,7 +39,7 @@
   transition: opacity 0.25s ease-in;
 }
 
-.checkbox__text {
+.text {
   display: none;
   justify-content: center;
   align-items: center;
@@ -48,7 +48,7 @@
   color: var(--color-day-black);
 }
 
-.checkbox__area {
+.area {
   appearance: none;
   -webkit-appearance: none;
   width: 1rem;
@@ -60,19 +60,19 @@
   box-sizing: border-box;
 }
 
-.checkbox__area:active {
+.area:active {
   background-color: var(--color-day-light-blue);
 }
 
-.checkbox__area:checked {
+.area:checked {
   background-color: var(--color-blue);
   border-color: var(--color-blue);
 }
 
-.checkbox__area:checked ~ .checkbox__icon {
+.area:checked ~ .icon {
   opacity: 1;
 }
 
-.checkbox__area:checked ~ .checkbox__text {
+.area:checked ~ .text {
   color: var(--color-blue);
 }
