@@ -1,4 +1,4 @@
-@import url(../../shared/Common/Common.module.css);
+@import url(../../shared/ThemeContext/themeParameters.css);
 
 ._ {
   display: flex;
@@ -36,7 +36,7 @@
   padding: 1rem;
   margin-top: 1rem;
   border-radius: 0.5rem;
-  background-color: var(--color-day-white-blue);
+  background-color: var(--color-day-white-blue, var(--color-night-white-blue));
 }
 
 .dateFilter,
@@ -47,8 +47,4 @@
 
 .applyFilterButton {
   padding: 0.5rem 0.5625rem;
-}
-
-.hidden {
-  display: none;
 }

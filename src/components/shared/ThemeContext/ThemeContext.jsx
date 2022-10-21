@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useMemo, useState } from "react";
 
 export const ThemeContext = createContext();
 
@@ -19,11 +19,10 @@ function ThemeProvider({ children }) {
     document.documentElement.dataset.theme = currentTheme;
   };
 
+  const value = useMemo(() => ({ theme, toggleTheme }), [theme]);
+
   return (
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 }
 

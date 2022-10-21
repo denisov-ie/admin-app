@@ -1,24 +1,22 @@
 import classnames from "classnames";
 import styles from "./AmountFilter.module.css";
-import Input, {
+import InputContainer, {
   DEFAULT_PREFIX as prefix,
-  INPUT_STYLE as input,
-} from "../../../shared/Input/Input";
+} from "../../shared/InputContainer/InputContainer";
 
 function AmountFilter({ className }) {
-  const classNames = classnames(styles._, {
+  const baseClassNames = classnames(styles._, {
     [className]: !!className,
   });
 
   return (
-    <div className={classNames}>
-      <Input
-        style={input.default}
+    <div className={baseClassNames}>
+      <InputContainer
         label="Сумма заказа"
         placeholder="₽"
         prefix={prefix.text("от")}
       />
-      <Input style={input.default} placeholder="₽" prefix={prefix.text("до")} />
+      <InputContainer placeholder="₽" prefix={prefix.text("до")} />
     </div>
   );
 }

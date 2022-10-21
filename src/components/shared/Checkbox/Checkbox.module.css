@@ -1,25 +1,7 @@
-@import url(../Common/Common.module.css);
+@import url(../ThemeContext/themeParameters.css);
 
 ._ {
   display: flex;
-}
-
-.withText .text {
-  display: flex;
-  margin-left: 0.5rem;
-}
-
-.withTextOnly .area {
-  display: none;
-}
-
-.withTextOnly .icon {
-  display: none;
-}
-
-.withTextOnly .text {
-  display: flex;
-  margin-left: 0;
 }
 
 .label {
@@ -40,12 +22,20 @@
 }
 
 .text {
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   line-height: inherit;
   font-size: inherit;
-  color: var(--color-day-black);
+  color: var(--color-day-black, var(--color-night-black));
+}
+
+.withText {
+  margin-left: 0.5rem;
+}
+
+.withTextOnly {
+  margin-left: 0;
 }
 
 .area {
@@ -54,14 +44,15 @@
   width: 1rem;
   height: 1rem;
   margin: 0;
-  background-color: var(--color-day-white);
-  border: 0.0625rem solid var(--color-day-light-blue);
+  background-color: var(--color-day-white, var(--color-night-white));
+  border: 0.0625rem solid
+    var(--color-day-light-blue, var(--color-night-light-blue));
   border-radius: 0.125rem;
   box-sizing: border-box;
 }
 
 .area:active {
-  background-color: var(--color-day-light-blue);
+  background-color: var(--color-day-light-blue, var(--color-night-light-blue));
 }
 
 .area:checked {

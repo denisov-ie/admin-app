@@ -22,7 +22,7 @@ function Button({
   icon,
   ...props
 }) {
-  const classNames = classnames(styles._, {
+  const baseClassNames = classnames(styles._, {
     [styles.small]: size === BUTTON_SIZE.small,
     [styles.medium]: size === BUTTON_SIZE.medium,
     [styles.blue]: color === BUTTON_COLOR.blue,
@@ -34,7 +34,7 @@ function Button({
   });
 
   return (
-    <button className={classNames} {...props}>
+    <button className={baseClassNames} {...props}>
       {icon && <Icon name={icon} className={styles.icon} />}
       {text && <div className={styles.text}>{text}</div>}
     </button>

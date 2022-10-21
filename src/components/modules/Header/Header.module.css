@@ -1,4 +1,4 @@
-@import url(../../shared/Common/Common.module.css);
+@import url(../../shared/ThemeContext/themeParameters.css);
 
 ._ {
   display: flex;
@@ -12,5 +12,5 @@
 }
 
 .title {
-  color: var(--color-day-black);
+  color: var(--color-day-black, var(--color-night-black));
 }

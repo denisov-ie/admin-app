@@ -1,4 +1,4 @@
-@import url(../Common/Common.module.css);
+@import url(../ThemeContext/themeParameters.css);
 
 ._ {
   display: flex;

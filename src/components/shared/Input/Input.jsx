@@ -1,34 +1,12 @@
 import classnames from "classnames";
-import { useState } from "react";
 import Icon, { ICON_TYPE as icon } from "../Icon/Icon";
 import styles from "./Input.module.css";
+
+const noop = () => {};
 
 function Component({ element, className }) {
   return <div className={className}>{element}</div>;
 }
-
-export const INPUT_STYLE = {
-  default: "default",
-  incorrect: "incorrect",
-};
-
-export const DEFAULT_PREFIX = {
-  text: (text, className = styles.prefixTextDefault) => (
-    <span className={className}>{text}</span>
-  ),
-  icon: (iconName, className = styles.prefixIconDefault) => (
-    <Icon name={iconName} className={className} />
-  ),
-};
-
-export const DEFAULT_POSTFIX = {
-  text: (text, className = styles.postfixTextDefault) => (
-    <span className={className}>{text}</span>
-  ),
-  icon: (iconName, className = styles.postfixIconDefault) => (
-    <Icon name={iconName} className={className} />
-  ),
-};
 
 function Input({
   className,
@@ -37,28 +15,21 @@ function Input({
   prefix,
   postfix,
   hideReset,
-  style = INPUT_STYLE.default,
   disabled,
+  incorrect,
+  message,
+  onChange = noop,
+  onClearButtonClick = noop,
   ...props
 }) {
-  const classNames = classnames(styles._, {
+  const baseClassNames = classnames(styles._, {
     [styles.disabled]: disabled,
-    [styles.incorrect]: !disabled && style === INPUT_STYLE.incorrect,
+    [styles.incorrect]: incorrect,
     [className]: !!className,
   });
 
-  const [message, setMessage] = useState("");
-
-  const handleInputChange = (e) => {
-    setMessage(e.target.value);
-  };
-
-  const handleClearButtonClick = () => {
-    setMessage("");
-  };
-
   return (
-    <div className={classNames} {...props}>
+    <div className={baseClassNames} {...props}>
       <label className={styles.label}>
         {label && <div className={styles.labelDivider}>{label}</div>}
         <div className={styles.field}>
@@ -66,20 +37,15 @@ function Input({
           <input
             className={styles.area}
             placeholder={placeholder}
-            onChange={handleInputChange}
+            onChange={onChange}
             disabled={disabled}
             value={message}
           />
           {postfix && (
             <Component element={postfix} className={styles.postfix} />
           )}
-          {!disabled && !hideReset && (
-            <button
-              className={classnames(styles.button, {
-                [styles.hidden]: message.length <= 0,
-              })}
-              onClick={handleClearButtonClick}
-            >
+          {!disabled && !hideReset && message.length > 0 && (
+            <button className={styles.button} onClick={onClearButtonClick}>
               <Icon name={icon.xLarge} className={styles.iconCross} />
             </button>
           )}

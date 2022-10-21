@@ -18,12 +18,12 @@ export function DropdownItemDivider() {
 }
 
 function Dropdown({ className, title, children }) {
-  const classNames = classnames(styles._, {
+  const baseClassNames = classnames(styles._, {
     [className]: !!className,
   });
 
   return (
-    <div className={classNames}>
+    <div className={baseClassNames}>
       {title && <span className={styles.title}>{title}</span>}
       {children}
     </div>

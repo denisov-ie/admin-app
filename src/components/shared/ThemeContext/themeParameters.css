@@ -21,10 +21,10 @@
 }
 
 :root[data-theme="dark"] {
-  --color-day-white: #2b2d33;
-  --color-day-black: #bcc4cc;
-  --color-day-light-blue: #454e52;
-  --color-day-white-blue: #171b1f;
+  --color-night-white: #2b2d33;
+  --color-night-black: #bcc4cc;
+  --color-night-light-blue: #454e52;
+  --color-night-white-blue: #171b1f;
 }
 
 body {

@@ -1,4 +1,4 @@
-@import url(../Common/Common.module.css);
+@import url(../ThemeContext/themeParameters.css);
 
 ._ {
   display: flex;
@@ -12,17 +12,17 @@
 
 .blue {
   background-color: var(--color-blue);
-  color: var(--color-day-white);
+  color: var(--color-day-white, var(--color-night-white));
 }
 
 .red {
   background-color: var(--color-red);
-  color: var(--color-day-white);
+  color: var(--color-day-white, var(--color-night-white));
 }
 
 .blue .icon {
-  stroke: var(--color-day-white);
-  fill: var(--color-day-white);
+  stroke: var(--color-day-white, var(--color-night-white));
+  fill: var(--color-day-white, var(--color-night-white));
 }
 
 .blueReverse {
@@ -37,12 +37,12 @@
 
 .blackReverse {
   background-color: transparent;
-  color: var(--color-day-black);
+  color: var(--color-day-black, var(--color-night-black));
 }
 
 .blackReverse .icon {
-  stroke: var(--color-day-black);
-  fill: var(--color-day-black);
+  stroke: var(--color-day-black, var(--color-night-black));
+  fill: var(--color-day-black, var(--color-night-black));
 }
 
 .medium {
