@@ -22,7 +22,7 @@ function Button({
   icon,
   ...props
 }) {
-  const baseClassNames = classnames(styles._, {
+  const baseClassNames = classnames(styles._, className, {
     [styles.small]: size === BUTTON_SIZE.small,
     [styles.medium]: size === BUTTON_SIZE.medium,
     [styles.blue]: color === BUTTON_COLOR.blue,
@@ -30,7 +30,6 @@ function Button({
     [styles.blueReverse]: color === BUTTON_COLOR.blueReverse,
     [styles.blackReverse]: color === BUTTON_COLOR.blackReverse,
     [styles.iconOnly]: !text,
-    [className]: !!className,
   });
 
   return (

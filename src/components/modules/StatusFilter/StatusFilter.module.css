@@ -3,7 +3,11 @@
   width: 12rem;
 }
 
-.wrapper {
+.inputWrapper div {
+  cursor: pointer;
+}
+
+.dropdownWrapper {
   position: absolute;
   top: 3.75rem;
   right: 0;

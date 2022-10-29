@@ -1,0 +1,15 @@
+@import url(../../context/ThemeContext/themeParameters.css);
+
+._ {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  color: var(--color-day-black, var(--color-night-black));
+  background-color: var(--color-day-white, var(--color-night-white));
+}
+
+.message {
+  display: flex;
+  margin: 0 auto;
+  padding-top: 1rem;
+}

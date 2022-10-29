@@ -1,0 +1,9 @@
+@import url(../../context/ThemeContext/themeParameters.css);
+
+._ {
+  display: flex;
+  height: 2.5rem;
+  padding: 0.75rem 0.5rem;
+  box-sizing: border-box;
+  color: var(--color-day-black, var(--color-night-black));
+}

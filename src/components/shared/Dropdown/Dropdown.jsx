@@ -18,9 +18,7 @@ export function DropdownItemDivider() {
 }
 
 function Dropdown({ className, title, children }) {
-  const baseClassNames = classnames(styles._, {
-    [className]: !!className,
-  });
+  const baseClassNames = classnames(styles._, className);
 
   return (
     <div className={baseClassNames}>

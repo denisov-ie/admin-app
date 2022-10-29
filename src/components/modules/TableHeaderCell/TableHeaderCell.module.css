@@ -1,0 +1,17 @@
+@import url(../../context/ThemeContext/themeParameters.css);
+
+._ {
+  color: var(--color-day-white-blue, var(--color-night-white-blue)) !important;
+}
+
+.icon {
+  margin-left: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+  fill: var(--color-day-white, var(--color-night-white));
+}
+
+._:hover {
+  background: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}

@@ -1,0 +1,35 @@
+@import url(../../context/ThemeContext/themeParameters.css);
+
+._ {
+  display: flex;
+  flex-direction: row;
+  height: 2.5rem;
+  width: 100%;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+  background-color: var(--color-blue);
+}
+
+._ > :nth-child(2) {
+  min-width: 6.75rem;
+}
+
+._ > :nth-child(3) {
+  min-width: 11rem;
+}
+
+._ > :nth-child(4) {
+  min-width: 11rem;
+}
+
+._ > :nth-child(5) {
+  min-width: 6rem;
+}
+
+._ > :nth-child(6) {
+  min-width: 8rem;
+}
+
+._ > :nth-child(7) {
+  width: 100%;
+}

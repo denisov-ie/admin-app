@@ -1,4 +1,4 @@
-import { createContext, useMemo, useState } from "react";
+import { createContext, useCallback, useMemo, useState } from "react";
 
 export const ThemeContext = createContext();
 
@@ -14,12 +14,12 @@ function ThemeProvider({ children }) {
 
   document.documentElement.dataset.theme = theme;
 
-  const toggleTheme = (currentTheme) => {
+  const toggleTheme = useCallback((currentTheme) => {
     setTheme(currentTheme);
     document.documentElement.dataset.theme = currentTheme;
-  };
+  }, []);
 
-  const value = useMemo(() => ({ theme, toggleTheme }), [theme]);
+  const value = useMemo(() => ({ theme, toggleTheme }), [theme, toggleTheme]);
 
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>

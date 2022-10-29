@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import { useState, useContext } from "react";
 import Button, {
   BUTTON_COLOR as color,
   BUTTON_SIZE as size,
@@ -6,21 +7,23 @@ import Button, {
 import Searchbar from "../../shared/Searchbar/Searchbar";
 import { ICON_TYPE as icon } from "../../shared/Icon/Icon";
 import styles from "./Filter.module.css";
-import StateFilterContainer from "../StateFilterContainer/StateFilterContainer";
+import StatusFilter from "../StatusFilter/StatusFilter";
 import AmountFilter from "../AmountFilter/AmountFilter";
 import DateFilter from "../DateFilter/DateFilter";
+import { FilterContext } from "../../context/FilterContext/FilterContext";
 
-const noop = () => {};
+function Filter({ className }) {
+  const baseClassNames = classnames(styles._, className);
 
-function Filter({
-  className,
-  isActive,
-  filterButtonColor,
-  onShowExtendedFiltersButtonClick = noop,
-}) {
-  const baseClassNames = classnames(styles._, {
-    [className]: !!className,
-  });
+  const { handleClearAllFilters } = useContext(FilterContext);
+
+  const [isActive, setIsActive] = useState(false);
+
+  const handleShowExtendedFilters = () => {
+    setIsActive(!isActive);
+  };
+
+  const filterButtonColor = isActive ? color.blue : color.blueReverse;
 
   return (
     <div className={baseClassNames}>
@@ -34,7 +37,7 @@ function Filter({
             size={size.medium}
             text="Фильтры"
             icon={icon.filter}
-            onClick={onShowExtendedFiltersButtonClick}
+            onClick={handleShowExtendedFilters}
           />
           {isActive && (
             <Button
@@ -42,6 +45,7 @@ function Filter({
               size={size.medium}
               text="Сбросить фильтры"
               id="filterResetButton"
+              onClick={handleClearAllFilters}
             />
           )}
         </div>
@@ -55,7 +59,7 @@ function Filter({
       {isActive && (
         <div className={styles.extendedBlock}>
           <DateFilter className={styles.dateFilter} />
-          <StateFilterContainer className={styles.stateFilter} />
+          <StatusFilter className={styles.stateFilter} />
           <AmountFilter className={styles.amountFilter} />
           <Button
             className={styles.applyFilterButton}

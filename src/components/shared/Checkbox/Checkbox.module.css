@@ -1,10 +1,6 @@
-@import url(../ThemeContext/themeParameters.css);
+@import url(../../context/ThemeContext/themeParameters.css);
 
 ._ {
-  display: flex;
-}
-
-.label {
   position: relative;
   display: flex;
   cursor: pointer;

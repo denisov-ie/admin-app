@@ -1,4 +1,4 @@
-@import url(../ThemeContext/themeParameters.css);
+@import url(../../context/ThemeContext/themeParameters.css);
 @import url(../Checkbox/Checkbox.module.css);
 @import url(../Input/Input.module.css);
 
