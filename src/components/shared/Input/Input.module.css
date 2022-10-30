@@ -1,5 +1,3 @@
-@import url(../../context/ThemeContext/themeParameters.css);
-
 ._ {
   display: flex;
   flex-direction: column;
@@ -8,10 +6,6 @@
 
 .disabled .field {
   background-color: var(--color-day-light-blue, var(--color-night-light-blue));
-}
-
-.incorrect .field {
-  border-color: var(--color-red);
 }
 
 .label {
@@ -33,6 +27,10 @@
   border-radius: 0.25rem;
   padding: 0.25rem 0.25rem 0.25rem 0.5rem;
   box-sizing: border-box;
+}
+
+.invalid {
+  border-color: var(--color-red);
 }
 
 .prefix,

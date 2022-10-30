@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import Icon from "../Icon/Icon";
+import { Icon } from "components/shared/Icon";
 import styles from "./Button.module.css";
 
 export const BUTTON_SIZE = {

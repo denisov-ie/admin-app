@@ -1,4 +1,4 @@
-import OrderPage from "../OrderPage/OrderPage";
+import OrderPage from "components/pages/OrderPage";
 
 function MainPage() {
   return (

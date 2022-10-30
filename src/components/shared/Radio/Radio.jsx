@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import Icon, { ICON_TYPE as icon } from "../Icon/Icon";
+import { Icon, ICON_TYPE as icon } from "components/shared/Icon";
 import styles from "./Radio.module.css";
 
 function Radio({ className, text, name, value, checked, textOnly, ...props }) {

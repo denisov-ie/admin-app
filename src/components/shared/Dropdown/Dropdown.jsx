@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import { cloneElement, useEffect, useRef, useState } from "react";
 import styles from "./Dropdown.module.css";
 
 export function DropdownListItem({ children }) {
@@ -17,13 +18,41 @@ export function DropdownItemDivider() {
   return <div className={styles.itemDivider} />;
 }
 
-function Dropdown({ className, title, children }) {
-  const baseClassNames = classnames(styles._, className);
+function Dropdown({ className, title, trigger, children }) {
+  const baseClassNames = classnames(styles.dropdown, className);
+
+  const [isActive, setIsActive] = useState(false);
+
+  const triggerRef = useRef();
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (!triggerRef.current.contains(e.target)) {
+        setIsActive(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
+
+  const modifiedTrigger = cloneElement(trigger, {
+    onClick: (e) => {
+      e.preventDefault();
+      setIsActive(!isActive);
+    },
+  });
 
   return (
-    <div className={baseClassNames}>
-      {title && <span className={styles.title}>{title}</span>}
-      {children}
+    <div className={styles._} ref={triggerRef}>
+      {modifiedTrigger}
+      {isActive && (
+        <div className={baseClassNames}>
+          {title && <span className={styles.title}>{title}</span>}
+          {children}
+        </div>
+      )}
     </div>
   );
 }

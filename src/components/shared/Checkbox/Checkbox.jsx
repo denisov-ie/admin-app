@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import Icon, { ICON_TYPE as icon } from "../Icon/Icon";
+import { Icon, ICON_TYPE as icon } from "components/shared/Icon";
 import styles from "./Checkbox.module.css";
 
 function Checkbox({ className, text, name, checked, textOnly, ...props }) {

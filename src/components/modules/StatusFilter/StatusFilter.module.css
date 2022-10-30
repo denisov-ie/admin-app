@@ -1,14 +1,13 @@
 ._ {
-  position: relative;
   width: 12rem;
 }
 
-.inputWrapper div {
+.dropdownWrapper {
+  top: calc(100% + 0.25rem);
+  right: 0;
   cursor: pointer;
 }
 
-.dropdownWrapper {
-  position: absolute;
-  top: 3.75rem;
-  right: 0;
+.cursor div {
+  cursor: pointer;
 }

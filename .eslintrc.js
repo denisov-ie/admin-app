@@ -26,4 +26,12 @@ module.exports = {
     "no-plusplus": 0,
     "no-restricted-syntax": 0,
   },
+  settings: {
+    "import/resolver": {
+      node: {
+        paths: ["src"],
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+      },
+    },
+  },
 };

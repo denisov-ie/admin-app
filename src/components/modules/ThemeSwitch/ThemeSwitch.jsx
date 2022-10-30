@@ -1,46 +1,27 @@
-import { useContext, useEffect, useRef, useState } from "react";
-import styles from "./ThemeSwitch.module.css";
-import Dropdown, {
+import { useContext } from "react";
+import {
+  Dropdown,
   DropdownItemDivider,
   DropdownSingleItem,
-} from "../../shared/Dropdown/Dropdown";
-import Button, {
+} from "components/shared/Dropdown";
+import {
+  Button,
   BUTTON_COLOR as color,
   BUTTON_SIZE as size,
-} from "../../shared/Button/Button";
-import { ICON_TYPE as icon } from "../../shared/Icon/Icon";
+} from "components/shared/Button";
+import { ICON_TYPE as icon } from "components/shared/Icon";
 import {
   COLOR_THEMES as themes,
   isDarkTheme,
   ThemeContext,
-} from "../../context/ThemeContext/ThemeContext";
+} from "components/context/ThemeContext";
+import styles from "./ThemeSwitch.module.css";
 
 function ThemeSwitch({ className }) {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
-  const [isActive, setIsActive] = useState(false);
-
-  const dropdownRef = useRef();
-
-  useEffect(() => {
-    const handler = (e) => {
-      if (!dropdownRef.current.contains(e.target)) {
-        setIsActive(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  });
-
-  const handleShowThemeDropdown = () => {
-    setIsActive(!isActive);
-  };
-
   const handleThemeSelection = (currentTheme) => {
     toggleTheme(currentTheme);
-    setIsActive(false);
   };
 
   const themeButtonText = isDarkTheme(theme) ? "Темная тема" : "Светлая тема";
@@ -56,39 +37,39 @@ function ThemeSwitch({ className }) {
     : color.blueReverse;
 
   return (
-    <div className={className} ref={dropdownRef}>
-      <Button
-        color={color.blueReverse}
-        size={size.medium}
-        text={themeButtonText}
-        icon={themeButtonIcon}
-        onClick={handleShowThemeDropdown}
-      />
-      {isActive && (
-        <div className={styles.wrapper}>
-          <Dropdown title="Выберите тему">
-            <DropdownSingleItem>
-              <Button
-                color={lightThemeButtonColor}
-                size={size.small}
-                text="Светлая"
-                icon={icon.sun}
-                onClick={() => handleThemeSelection(themes.light)}
-              />
-            </DropdownSingleItem>
-            <DropdownItemDivider />
-            <DropdownSingleItem>
-              <Button
-                color={darkThemeButtonColor}
-                size={size.small}
-                text="Темная"
-                icon={icon.moon}
-                onClick={() => handleThemeSelection(themes.dark)}
-              />
-            </DropdownSingleItem>
-          </Dropdown>
-        </div>
-      )}
+    <div className={className}>
+      <Dropdown
+        className={styles.dropdownWrapper}
+        trigger={
+          <Button
+            color={color.blueReverse}
+            size={size.medium}
+            text={themeButtonText}
+            icon={themeButtonIcon}
+          />
+        }
+        title="Выберите тему"
+      >
+        <DropdownSingleItem>
+          <Button
+            color={lightThemeButtonColor}
+            size={size.small}
+            text="Светлая"
+            icon={icon.sun}
+            onClick={() => handleThemeSelection(themes.light)}
+          />
+        </DropdownSingleItem>
+        <DropdownItemDivider />
+        <DropdownSingleItem>
+          <Button
+            color={darkThemeButtonColor}
+            size={size.small}
+            text="Темная"
+            icon={icon.moon}
+            onClick={() => handleThemeSelection(themes.dark)}
+          />
+        </DropdownSingleItem>
+      </Dropdown>
     </div>
   );
 }

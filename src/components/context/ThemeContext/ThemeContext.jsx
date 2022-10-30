@@ -1,4 +1,10 @@
-import { createContext, useCallback, useMemo, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 export const ThemeContext = createContext();
 
@@ -12,11 +18,12 @@ export const isDarkTheme = (theme) => theme === COLOR_THEMES.dark;
 function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(COLOR_THEMES.light);
 
-  document.documentElement.dataset.theme = theme;
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
 
   const toggleTheme = useCallback((currentTheme) => {
     setTheme(currentTheme);
-    document.documentElement.dataset.theme = currentTheme;
   }, []);
 
   const value = useMemo(() => ({ theme, toggleTheme }), [theme, toggleTheme]);

@@ -1,5 +1,5 @@
-import ThemeProvider from "./components/context/ThemeContext/ThemeContext";
-import MainPage from "./components/pages/MainPage/MainPage";
+import { ThemeProvider } from "components/context/ThemeContext";
+import MainPage from "components/pages/MainPage";
 
 function App() {
   return (

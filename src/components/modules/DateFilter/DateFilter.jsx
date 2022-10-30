@@ -1,12 +1,12 @@
 import classnames from "classnames";
 import { useContext } from "react";
-import styles from "./DateFilter.module.css";
-import Input, { DEFAULT_PREFIX as prefix } from "../../shared/Input/Input";
+import { DEFAULT_PREFIX as prefix, Input } from "components/shared/Input";
 import {
   FilterContext,
   FILTER_TYPES as filterType,
   FILTER_INTERVAL_TYPES as filterIntervalType,
-} from "../../context/FilterContext/FilterContext";
+} from "components/context/FilterContext";
+import styles from "./DateFilter.module.css";
 
 function DateFilter({ className }) {
   const baseClassNames = classnames(styles._, className);
@@ -29,23 +29,17 @@ function DateFilter({ className }) {
         placeholder="dd.mm.yyyy"
         prefix={prefix.text("с")}
         value={filters.dates.from}
-        externalOnChangeListener={(e) =>
-          handleDateFilterChange(e, filterIntervalType.from)
-        }
-        externalOnClearListener={() =>
-          handleDateFilterClear(filterIntervalType.from)
-        }
+        pattern="[0-9]{2}.[0-9]{2}.[0-9]{4}"
+        onChange={(e) => handleDateFilterChange(e, filterIntervalType.from)}
+        onClear={() => handleDateFilterClear(filterIntervalType.from)}
       />
       <Input
         placeholder="dd.mm.yyyy"
         prefix={prefix.text("по")}
         value={filters.dates.to}
-        externalOnChangeListener={(e) =>
-          handleDateFilterChange(e, filterIntervalType.to)
-        }
-        externalOnClearListener={() =>
-          handleDateFilterClear(filterIntervalType.to)
-        }
+        pattern="[0-9]{2}.[0-9]{2}.[0-9]{4}"
+        onChange={(e) => handleDateFilterChange(e, filterIntervalType.to)}
+        onClear={() => handleDateFilterClear(filterIntervalType.to)}
       />
     </div>
   );

@@ -1,8 +1,11 @@
-@import url(../../context/ThemeContext/themeParameters.css);
 @import url(../Checkbox/Checkbox.module.css);
 @import url(../Input/Input.module.css);
 
 ._ {
+  position: relative;
+}
+
+.dropdown {
   display: flex;
   flex-direction: column;
   border-radius: 0.5rem;
@@ -13,6 +16,7 @@
   width: 10rem;
   box-sizing: border-box;
   align-items: stretch;
+  position: absolute;
 }
 
 .singleItem {

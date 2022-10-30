@@ -1,5 +1,3 @@
-@import url(../../context/ThemeContext/themeParameters.css);
-
 ._ {
   display: flex;
   align-items: center;
@@ -21,6 +19,11 @@
 }
 
 .blue .icon {
+  stroke: var(--color-day-white, var(--color-night-white));
+  fill: var(--color-day-white, var(--color-night-white));
+}
+
+.red .icon {
   stroke: var(--color-day-white, var(--color-night-white));
   fill: var(--color-day-white, var(--color-night-white));
 }

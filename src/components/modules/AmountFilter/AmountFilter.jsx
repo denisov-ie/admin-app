@@ -1,12 +1,12 @@
 import classnames from "classnames";
 import { useContext } from "react";
-import styles from "./AmountFilter.module.css";
-import Input, { DEFAULT_PREFIX as prefix } from "../../shared/Input/Input";
+import { DEFAULT_PREFIX as prefix, Input } from "components/shared/Input";
 import {
   FilterContext,
   FILTER_TYPES as filterType,
   FILTER_INTERVAL_TYPES as filterIntervalType,
-} from "../../context/FilterContext/FilterContext";
+} from "components/context/FilterContext";
+import styles from "./AmountFilter.module.css";
 
 function AmountFilter({ className }) {
   const baseClassNames = classnames(styles._, className);
@@ -29,23 +29,17 @@ function AmountFilter({ className }) {
         placeholder="₽"
         prefix={prefix.text("от")}
         value={filters.amounts.from}
-        externalOnChangeListener={(e) =>
-          handleAmountFilterChange(e, filterIntervalType.from)
-        }
-        externalOnClearListener={() =>
-          handleAmountsFilterClear(filterIntervalType.from)
-        }
+        pattern="^\d+(,\d{1,2})?$"
+        onChange={(e) => handleAmountFilterChange(e, filterIntervalType.from)}
+        onClear={() => handleAmountsFilterClear(filterIntervalType.from)}
       />
       <Input
         placeholder="₽"
         prefix={prefix.text("до")}
         value={filters.amounts.to}
-        externalOnChangeListener={(e) =>
-          handleAmountFilterChange(e, filterIntervalType.to)
-        }
-        externalOnClearListener={() =>
-          handleAmountsFilterClear(filterIntervalType.to)
-        }
+        pattern="^\d+(,\d{1,2})?$"
+        onChange={(e) => handleAmountFilterChange(e, filterIntervalType.to)}
+        onClear={() => handleAmountsFilterClear(filterIntervalType.to)}
       />
     </div>
   );

@@ -1,16 +1,17 @@
 import classnames from "classnames";
 import { useState, useContext } from "react";
-import Button, {
+import {
+  Button,
   BUTTON_COLOR as color,
   BUTTON_SIZE as size,
-} from "../../shared/Button/Button";
-import Searchbar from "../../shared/Searchbar/Searchbar";
-import { ICON_TYPE as icon } from "../../shared/Icon/Icon";
+} from "components/shared/Button";
+import Searchbar from "components/shared/Searchbar";
+import { Icon, ICON_TYPE as icon } from "components/shared/Icon";
+import StatusFilter from "components/modules/StatusFilter";
+import AmountFilter from "components/modules/AmountFilter";
+import DateFilter from "components/modules/DateFilter";
+import { FilterContext } from "components/context/FilterContext";
 import styles from "./Filter.module.css";
-import StatusFilter from "../StatusFilter/StatusFilter";
-import AmountFilter from "../AmountFilter/AmountFilter";
-import DateFilter from "../DateFilter/DateFilter";
-import { FilterContext } from "../../context/FilterContext/FilterContext";
 
 function Filter({ className }) {
   const baseClassNames = classnames(styles._, className);
@@ -32,13 +33,15 @@ function Filter({ className }) {
           <div className={styles.searchbarWrapper}>
             <Searchbar placeholder="Номер заказа или ФИО" />
           </div>
-          <Button
-            color={filterButtonColor}
-            size={size.medium}
-            text="Фильтры"
-            icon={icon.filter}
-            onClick={handleShowExtendedFilters}
-          />
+          <div className={styles.filterButtonWrapper}>
+            <Button
+              color={filterButtonColor}
+              size={size.medium}
+              text="Фильтры"
+              icon={icon.filter}
+              onClick={handleShowExtendedFilters}
+            />
+          </div>
           {isActive && (
             <Button
               color={color.blueReverse}
@@ -49,12 +52,10 @@ function Filter({ className }) {
             />
           )}
         </div>
-        <Button
-          color={color.blueReverse}
-          size={size.medium}
-          text="Загрузка"
-          icon={icon.refresh}
-        />
+        <div className={styles.rightBlock}>
+          <Icon name={icon.refresh} className={styles.icon} />
+          Загрузка
+        </div>
       </div>
       {isActive && (
         <div className={styles.extendedBlock}>

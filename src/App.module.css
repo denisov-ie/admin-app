@@ -1,5 +1,3 @@
-@import url(components/context/ThemeContext/themeParameters.css);
-
 body {
   background-color: var(--color-day-white, var(--color-night-white));
 }

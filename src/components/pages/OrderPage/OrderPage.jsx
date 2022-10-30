@@ -1,8 +1,7 @@
-import Header from "../../modules/Header/Header";
-import Filter from "../../modules/Filter/Filter";
+import Header from "components/modules/Header";
+import Filter from "components/modules/Filter";
+import { FilterProvider } from "components/context/FilterContext";
 import styles from "./OrderPage.module.css";
-import FilterProvider from "../../context/FilterContext/FilterContext";
-import Table from "../../modules/Table/Table";
 
 function OrderPage() {
   return (
@@ -11,7 +10,6 @@ function OrderPage() {
       <FilterProvider>
         <Filter />
       </FilterProvider>
-      <Table />
     </div>
   );
 }
