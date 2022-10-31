@@ -8,16 +8,8 @@ import {
   FilterContext,
   FILTER_TYPES as filterType,
 } from "components/context/FilterContext";
+import { STATUSES as status } from "components/modules/Status";
 import styles from "./StatusFilter.module.css";
-
-const STATUSES = {
-  new: { value: "new", name: "Новый" },
-  calculation: { value: "calculation", name: "Рассчет" },
-  confirmed: { value: "confirmed", name: "Подтвержден" },
-  postponed: { value: "postponed", name: "Отложен" },
-  executed: { value: "executed", name: "Выполнен" },
-  canceled: { value: "canceled", name: "Отменен" },
-};
 
 function StatusFilter({ className }) {
   const baseClassNames = classnames(styles._, className);
@@ -32,7 +24,7 @@ function StatusFilter({ className }) {
     const checkedValues = [];
     for (const key in values) {
       if (values[key]) {
-        checkedValues.push(STATUSES[key].name);
+        checkedValues.push(status[key].name);
       }
     }
     return checkedValues.length > 0 ? checkedValues.join(", ") : "Любой";
@@ -52,58 +44,15 @@ function StatusFilter({ className }) {
           />
         }
       >
-        <DropdownListItem>
-          <Checkbox
-            text="Новый"
-            onChange={(e) => handleStatusFilterChange(e, STATUSES.new.value)}
-            checked={filters.statuses[STATUSES.new.value]}
-          />
-        </DropdownListItem>
-        <DropdownListItem>
-          <Checkbox
-            text="Рассчет"
-            onChange={(e) =>
-              handleStatusFilterChange(e, STATUSES.calculation.value)
-            }
-            checked={filters.statuses[STATUSES.calculation.value]}
-          />
-        </DropdownListItem>
-        <DropdownListItem>
-          <Checkbox
-            text="Подтвержен"
-            onChange={(e) =>
-              handleStatusFilterChange(e, STATUSES.confirmed.value)
-            }
-            checked={filters.statuses[STATUSES.confirmed.value]}
-          />
-        </DropdownListItem>
-        <DropdownListItem>
-          <Checkbox
-            text="Отложен"
-            onChange={(e) =>
-              handleStatusFilterChange(e, STATUSES.postponed.value)
-            }
-            checked={filters.statuses[STATUSES.postponed.value]}
-          />
-        </DropdownListItem>
-        <DropdownListItem>
-          <Checkbox
-            text="Выполнен"
-            onChange={(e) =>
-              handleStatusFilterChange(e, STATUSES.executed.value)
-            }
-            checked={filters.statuses[STATUSES.executed.value]}
-          />
-        </DropdownListItem>
-        <DropdownListItem>
-          <Checkbox
-            text="Отменен"
-            onChange={(e) =>
-              handleStatusFilterChange(e, STATUSES.canceled.value)
-            }
-            checked={filters.statuses[STATUSES.canceled.value]}
-          />
-        </DropdownListItem>
+        {Object.values(status).map(({ value, name }) => (
+          <DropdownListItem key={value}>
+            <Checkbox
+              text={name}
+              onChange={(e) => handleStatusFilterChange(e, value)}
+              checked={filters.statuses[value]}
+            />
+          </DropdownListItem>
+        ))}
       </Dropdown>
     </div>
   );
