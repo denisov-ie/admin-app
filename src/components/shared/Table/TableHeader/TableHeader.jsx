@@ -1,4 +1,4 @@
-import TableRow from "components/shared/Table/TableRow";
+import { TableRow } from "components/shared/Table";
 import classnames from "classnames";
 import styles from "./TableHeader.module.css";
 

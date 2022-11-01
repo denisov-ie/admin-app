@@ -5,28 +5,3 @@
   box-sizing: border-box;
   color: var(--color-day-black, var(--color-night-black));
 }
-
-.checkbox {
-  min-width: 2rem;
-}
-
-.orderNumber {
-  min-width: 6.75rem;
-}
-
-.date,
-.status {
-  min-width: 11rem;
-}
-
-.positionCount {
-  min-width: 6rem;
-}
-
-.amount {
-  min-width: 8rem;
-}
-
-.name {
-  width: 100%;
-}
