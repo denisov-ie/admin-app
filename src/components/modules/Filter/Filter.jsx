@@ -10,13 +10,17 @@ import { Icon, ICON_TYPE as icon } from "components/shared/Icon";
 import StatusFilter from "components/modules/StatusFilter";
 import AmountFilter from "components/modules/AmountFilter";
 import DateFilter from "components/modules/DateFilter";
-import { FilterContext } from "components/context/FilterContext";
+import {
+  FILTER_TYPES as filterType,
+  FilterContext,
+} from "components/context/FilterContext";
 import styles from "./Filter.module.css";
 
 function Filter({ className }) {
   const baseClassNames = classnames(styles._, className);
 
-  const { handleClearAllFilters } = useContext(FilterContext);
+  const { filters, handleFilterChange, handleClearAllFilters } =
+    useContext(FilterContext);
 
   const [isActive, setIsActive] = useState(false);
 
@@ -31,25 +35,32 @@ function Filter({ className }) {
       <div className={styles.mainBlock}>
         <div className={styles.leftBlock}>
           <div className={styles.searchbarWrapper}>
-            <Searchbar placeholder="Номер заказа или ФИО" />
+            <Searchbar
+              placeholder="Номер заказа или ФИО"
+              value={filters.search}
+              onChange={(e) => handleFilterChange(e, filterType.search)}
+              onClear={() => handleClearAllFilters(filterType.search)}
+            />
           </div>
           <div className={styles.filterButtonWrapper}>
             <Button
               color={filterButtonColor}
               size={size.medium}
-              text="Фильтры"
               icon={icon.filter}
               onClick={handleShowExtendedFilters}
-            />
+            >
+              Фильтры
+            </Button>
           </div>
           {isActive && (
             <Button
               color={color.blueReverse}
               size={size.medium}
-              text="Сбросить фильтры"
               id="filterResetButton"
               onClick={handleClearAllFilters}
-            />
+            >
+              Сбросить фильтры
+            </Button>
           )}
         </div>
         <div className={styles.rightBlock}>
@@ -66,8 +77,9 @@ function Filter({ className }) {
             className={styles.applyFilterButton}
             color={color.blueReverse}
             size={size.medium}
-            text="Применить"
-          />
+          >
+            Применить
+          </Button>
         </div>
       )}
     </div>

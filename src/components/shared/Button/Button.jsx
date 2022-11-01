@@ -18,8 +18,8 @@ function Button({
   className,
   size = BUTTON_SIZE.medium,
   color = BUTTON_COLOR.blue,
-  text,
   icon,
+  children,
   ...props
 }) {
   const baseClassNames = classnames(styles._, className, {
@@ -29,13 +29,13 @@ function Button({
     [styles.red]: color === BUTTON_COLOR.red,
     [styles.blueReverse]: color === BUTTON_COLOR.blueReverse,
     [styles.blackReverse]: color === BUTTON_COLOR.blackReverse,
-    [styles.iconOnly]: !text,
+    [styles.iconOnly]: !children,
   });
 
   return (
     <button className={baseClassNames} {...props}>
       {icon && <Icon name={icon} className={styles.icon} />}
-      {text && <div className={styles.text}>{text}</div>}
+      {children && <div className={styles.text}>{children}</div>}
     </button>
   );
 }

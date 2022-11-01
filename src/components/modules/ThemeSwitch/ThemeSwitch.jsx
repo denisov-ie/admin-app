@@ -44,9 +44,10 @@ function ThemeSwitch({ className }) {
           <Button
             color={color.blueReverse}
             size={size.medium}
-            text={themeButtonText}
             icon={themeButtonIcon}
-          />
+          >
+            {themeButtonText}
+          </Button>
         }
         title="Выберите тему"
       >
@@ -54,20 +55,22 @@ function ThemeSwitch({ className }) {
           <Button
             color={lightThemeButtonColor}
             size={size.small}
-            text="Светлая"
             icon={icon.sun}
             onClick={() => handleThemeSelection(themes.light)}
-          />
+          >
+            Светлая
+          </Button>
         </DropdownSingleItem>
         <DropdownItemDivider />
         <DropdownSingleItem>
           <Button
             color={darkThemeButtonColor}
             size={size.small}
-            text="Темная"
             icon={icon.moon}
             onClick={() => handleThemeSelection(themes.dark)}
-          />
+          >
+            Темная
+          </Button>
         </DropdownSingleItem>
       </Dropdown>
     </div>

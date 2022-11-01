@@ -1,5 +1,4 @@
 import classnames from "classnames";
-import { useEffect, useRef } from "react";
 import { Icon, ICON_TYPE as icon } from "components/shared/Icon";
 import styles from "./Input.module.css";
 
@@ -34,24 +33,16 @@ function Input({
   prefix,
   postfix,
   disabled,
-  value,
+  invalid,
+  value = "",
   onChange = noop,
   onClear,
   ...props
 }) {
   const baseClassNames = classnames(styles._, className, {
     [styles.disabled]: disabled,
+    [styles.invalid]: invalid,
   });
-
-  const inputRef = useRef();
-
-  useEffect(() => {
-    if (inputRef.current?.checkValidity()) {
-      inputRef.current?.parentElement.classList.remove(styles.invalid);
-    } else {
-      inputRef.current?.parentElement.classList.add(styles.invalid);
-    }
-  }, [value]);
 
   return (
     <div className={baseClassNames}>
@@ -60,7 +51,6 @@ function Input({
         <div className={styles.field}>
           {prefix && <Component element={prefix} className={styles.prefix} />}
           <input
-            ref={inputRef}
             className={styles.area}
             placeholder={placeholder}
             onChange={onChange}
@@ -71,7 +61,7 @@ function Input({
           {postfix && (
             <Component element={postfix} className={styles.postfix} />
           )}
-          {!disabled && onClear && value?.length > 0 && (
+          {!disabled && onClear && value.length > 0 && (
             <button className={styles.button} onClick={onClear}>
               <Icon name={icon.xLarge} className={styles.iconCross} />
             </button>

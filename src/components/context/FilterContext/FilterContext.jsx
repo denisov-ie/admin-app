@@ -1,77 +1,68 @@
-import { createContext, useCallback, useMemo, useState } from "react";
+import { createContext, useState } from "react";
 
 export const FilterContext = createContext();
 
 export const FILTER_TYPES = {
-  dates: "dates",
-  amounts: "amounts",
+  search: "search",
+  dateFrom: "dateFrom",
+  dateTo: "dateTo",
+  amountFrom: "amountFrom",
+  amountTo: "amountTo",
   statuses: "statuses",
 };
 
-export const FILTER_INTERVAL_TYPES = {
-  from: "from",
-  to: "to",
-};
-
-function getDefaultFilters() {
-  return {
-    dates: {
-      from: "",
-      to: "",
-    },
-    amounts: {
-      from: "",
-      to: "",
-    },
-    statuses: {
-      new: false,
-      calculation: false,
-      confirmed: false,
-      postponed: false,
-      executed: false,
-      canceled: false,
-    },
-  };
-}
+const initialState = () => ({
+  search: "",
+  dateFrom: "",
+  dateTo: "",
+  amountFrom: "",
+  amountTo: "",
+  statuses: {
+    new: false,
+    calculation: false,
+    confirmed: false,
+    postponed: false,
+    executed: false,
+    canceled: false,
+  },
+});
 
 function FilterProvider({ children }) {
-  const [filters, setFilters] = useState(getDefaultFilters());
+  const [filters, setFilters] = useState(initialState);
 
-  const handleFilterChange = useCallback(
-    ({ target: { checked, value } }, filterType, filterSegment) => {
-      filters[filterType][filterSegment] =
-        typeof filters[filterType][filterSegment] === "boolean"
-          ? checked
-          : value;
-      const newFilters = { ...filters };
-      setFilters(newFilters);
-    },
-    [filters]
-  );
+  const handleFilterChange = (
+    { target: { checked, value } },
+    filterType,
+    filterSegment
+  ) => {
+    if (filterSegment) {
+      filters[filterType][filterSegment] = checked;
+    } else {
+      filters[filterType] = value;
+    }
+    const newFilters = { ...filters };
+    setFilters(newFilters);
+  };
 
-  const handleFilterClear = useCallback(
-    (filterType, filterSegment) => {
-      filters[filterType][filterSegment] =
-        typeof filters[filterType][filterSegment] === "boolean" ? false : "";
-      const newFilters = { ...filters };
-      setFilters(newFilters);
-    },
-    [filters]
-  );
+  const handleFilterClear = (filterType, filterSegment) => {
+    if (filterSegment) {
+      filters[filterType][filterSegment] = false;
+    } else {
+      filters[filterType] = "";
+    }
+    const newFilters = { ...filters };
+    setFilters(newFilters);
+  };
 
-  const handleClearAllFilters = useCallback(() => {
-    setFilters(getDefaultFilters());
-  }, []);
+  const handleClearAllFilters = () => setFilters(initialState);
 
-  const value = useMemo(
-    () => ({
-      filters,
-      handleFilterChange,
-      handleFilterClear,
-      handleClearAllFilters,
-    }),
-    [filters, handleFilterChange, handleFilterClear, handleClearAllFilters]
-  );
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
+  const value = {
+    filters,
+    handleFilterChange,
+    handleFilterClear,
+    handleClearAllFilters,
+  };
 
   return (
     <FilterContext.Provider value={value}>{children}</FilterContext.Provider>

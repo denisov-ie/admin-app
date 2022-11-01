@@ -1,21 +1,18 @@
 import classnames from "classnames";
 import { ICON_TYPE as icon } from "components/shared/Icon";
 import { DEFAULT_PREFIX as prefix, Input } from "components/shared/Input";
-import { useState } from "react";
 import styles from "./Searchbar.module.css";
 
-function Searchbar({ className, placeholder, ...props }) {
+function Searchbar({
+  className,
+  value,
+  placeholder,
+  invalid,
+  onChange,
+  onClear,
+  ...props
+}) {
   const baseClassNames = classnames(styles._, className);
-
-  const [value, setValue] = useState("");
-
-  const handleOnChange = (e) => {
-    setValue(e.target.value);
-  };
-
-  const handleOnClearButtonClick = () => {
-    setValue("");
-  };
 
   return (
     <div className={baseClassNames}>
@@ -23,8 +20,9 @@ function Searchbar({ className, placeholder, ...props }) {
         placeholder={placeholder}
         prefix={prefix.icon(icon.search, styles.iconSearch)}
         value={value}
-        onChange={handleOnChange}
-        onClear={handleOnClearButtonClick}
+        invalid={invalid}
+        onChange={onChange}
+        onClear={onClear}
         {...props}
       />
     </div>
