@@ -8,6 +8,10 @@
   background-color: var(--color-day-light-blue, var(--color-night-light-blue));
 }
 
+.invalid .field {
+  border-color: var(--color-red);
+}
+
 .label {
   line-height: inherit;
   color: var(--color-day-black, var(--color-night-black));
@@ -27,10 +31,6 @@
   border-radius: 0.25rem;
   padding: 0.25rem 0.25rem 0.25rem 0.5rem;
   box-sizing: border-box;
-}
-
-.invalid {
-  border-color: var(--color-red);
 }
 
 .prefix,

@@ -4,7 +4,6 @@ import { DEFAULT_PREFIX as prefix, Input } from "components/shared/Input";
 import {
   FilterContext,
   FILTER_TYPES as filterType,
-  FILTER_INTERVAL_TYPES as filterIntervalType,
 } from "components/context/FilterContext";
 import styles from "./AmountFilter.module.css";
 
@@ -14,32 +13,24 @@ function AmountFilter({ className }) {
   const { filters, handleFilterChange, handleFilterClear } =
     useContext(FilterContext);
 
-  const handleAmountFilterChange = (e, filterSegment) => {
-    handleFilterChange(e, filterType.amounts, filterSegment);
-  };
-
-  const handleAmountsFilterClear = (filterSegment) => {
-    handleFilterClear(filterType.amounts, filterSegment);
-  };
-
   return (
     <div className={baseClassNames}>
       <Input
         label="Сумма заказа"
         placeholder="₽"
         prefix={prefix.text("от")}
-        value={filters.amounts.from}
-        pattern="^\d+(,\d{1,2})?$"
-        onChange={(e) => handleAmountFilterChange(e, filterIntervalType.from)}
-        onClear={() => handleAmountsFilterClear(filterIntervalType.from)}
+        value={filters.amountFrom}
+        invalid={!/^\d+(,\d{1,2})?$|^$/.test(filters.amountFrom)}
+        onChange={(e) => handleFilterChange(e, filterType.amountFrom)}
+        onClear={() => handleFilterClear(filterType.amountFrom)}
       />
       <Input
         placeholder="₽"
         prefix={prefix.text("до")}
-        value={filters.amounts.to}
-        pattern="^\d+(,\d{1,2})?$"
-        onChange={(e) => handleAmountFilterChange(e, filterIntervalType.to)}
-        onClear={() => handleAmountsFilterClear(filterIntervalType.to)}
+        value={filters.amountTo}
+        invalid={!/^\d+(,\d{1,2})?$|^$/.test(filters.amountTo)}
+        onChange={(e) => handleFilterChange(e, filterType.amountTo)}
+        onClear={() => handleFilterClear(filterType.amountTo)}
       />
     </div>
   );
