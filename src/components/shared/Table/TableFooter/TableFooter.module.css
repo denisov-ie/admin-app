@@ -1,7 +1,6 @@
 ._ {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   background-color: var(--color-day-white-blue, var(--color-night-white-blue));
   color: var(--color-blue);
 }

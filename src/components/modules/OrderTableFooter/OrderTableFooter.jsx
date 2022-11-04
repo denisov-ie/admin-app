@@ -29,7 +29,7 @@ function OrderTableFooter() {
   };
 
   return (
-    <TableFooter>
+    <TableFooter className={styles._}>
       <div className={styles.leftBlock}>
         Выбрано записей: n
         <Dropdown

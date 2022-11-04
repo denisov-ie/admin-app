@@ -1,3 +1,7 @@
+._ {
+  justify-content: space-between;
+}
+
 .leftBlock {
   display: grid;
   grid-auto-flow: column;
