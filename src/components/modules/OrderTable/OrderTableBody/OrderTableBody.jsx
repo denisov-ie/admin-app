@@ -1,16 +1,8 @@
 import { TableBody, TableCell, TableRow } from "components/shared/Table";
 import Checkbox from "components/shared/Checkbox";
-import { Status, STATUSES as status } from "components/modules/Status";
+import { Status } from "components/modules/Status";
+import convertToRoubles from "components/utils/convertToRoubles";
 import styles from "components/modules/OrderTable/OrderTable.module.css";
-
-const PREPARED_STATUSES = {
-  new: <Status status={status.new.value} />,
-  calculation: <Status status={status.calculation.value} />,
-  confirmed: <Status status={status.confirmed.value} />,
-  postponed: <Status status={status.postponed.value} />,
-  executed: <Status status={status.executed.value} />,
-  canceled: <Status status={status.canceled.value} />,
-};
 
 function OrderTableBody({ orders }) {
   return (
@@ -27,18 +19,13 @@ function OrderTableBody({ orders }) {
             {order.date}
           </TableCell>
           <TableCell className={styles.status} sortable>
-            {PREPARED_STATUSES[order.status]}
+            <Status status={order.status} />
           </TableCell>
           <TableCell className={styles.positionCount} sortable>
             {order.positionCount}
           </TableCell>
           <TableCell className={styles.amount} sortable>
-            {order.amount.toLocaleString("ru-Ru", {
-              style: "currency",
-              currency: "RUB",
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 2,
-            })}
+            {convertToRoubles(order.amount)}
           </TableCell>
           <TableCell className={styles.name}>{order.name}</TableCell>
         </TableRow>

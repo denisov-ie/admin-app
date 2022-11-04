@@ -15,7 +15,7 @@ import { STATUSES as status } from "components/modules/Status";
 import Radio from "components/shared/Radio";
 import { Input } from "components/shared/Input";
 import { useState } from "react";
-import styles from "./OrderTableFooter.module.css";
+import styles from "components/modules/OrderTable/OrderTableFooter/OrderTableFooter.module.css";
 
 function OrderTableFooter() {
   const [page, setPage] = useState("");

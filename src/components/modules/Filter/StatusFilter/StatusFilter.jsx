@@ -9,7 +9,7 @@ import {
   FILTER_TYPES as filterType,
 } from "components/context/FilterContext";
 import { STATUSES as status } from "components/modules/Status";
-import styles from "./StatusFilter.module.css";
+import styles from "components/modules/Filter/StatusFilter/StatusFilter.module.css";
 
 function StatusFilter({ className }) {
   const baseClassNames = classnames(styles._, className);

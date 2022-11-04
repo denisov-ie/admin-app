@@ -1,7 +1,7 @@
 import { Table } from "components/shared/Table";
-import OrderTableHeader from "components/modules/OrderTableHeader";
-import OrderTableBody from "components/modules/OrderTableBody";
-import OrderTableFooter from "components/modules/OrderTableFooter";
+import OrderTableHeader from "components/modules/OrderTable/OrderTableHeader";
+import OrderTableBody from "components/modules/OrderTable/OrderTableBody";
+import OrderTableFooter from "components/modules/OrderTable/OrderTableFooter";
 
 function OrderTable({ orders }) {
   return (
