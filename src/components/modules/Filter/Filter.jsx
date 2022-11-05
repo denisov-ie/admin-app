@@ -7,9 +7,9 @@ import {
 } from "components/shared/Button";
 import Searchbar from "components/shared/Searchbar";
 import { Icon, ICON_TYPE as icon } from "components/shared/Icon";
-import StatusFilter from "components/modules/StatusFilter";
-import AmountFilter from "components/modules/AmountFilter";
-import DateFilter from "components/modules/DateFilter";
+import StatusFilter from "components/modules/Filter/StatusFilter";
+import AmountFilter from "components/modules/Filter/AmountFilter";
+import DateFilter from "components/modules/Filter/DateFilter";
 import {
   FILTER_TYPES as filterType,
   FilterContext,

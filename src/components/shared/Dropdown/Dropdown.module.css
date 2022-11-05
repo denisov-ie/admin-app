@@ -17,6 +17,7 @@
   box-sizing: border-box;
   align-items: stretch;
   position: absolute;
+  z-index: 1;
 }
 
 .singleItem {
@@ -76,9 +77,5 @@
 }
 
 .item:hover {
-  background-color: var(--color-day-light-blue, var(--color-night-light-blue));
-}
-
-.item:active {
-  background-color: var(--color-blue);
+  background-color: var(--color-day-shade);
 }

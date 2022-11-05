@@ -1,0 +1,9 @@
+._ {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  height: 2.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-day-white-blue, var(--color-night-white-blue));
+  color: var(--color-blue);
+}

@@ -5,7 +5,7 @@ import {
   FilterContext,
   FILTER_TYPES as filterType,
 } from "components/context/FilterContext";
-import styles from "./DateFilter.module.css";
+import styles from "components/modules/Filter/DateFilter/DateFilter.module.css";
 
 function DateFilter({ className }) {
   const baseClassNames = classnames(styles._, className);

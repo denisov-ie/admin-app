@@ -10,7 +10,10 @@
   --color-red: #f53152;
   --color-orange: #ff8c56;
   --color-green: #0fb864;
+  --color-day-shade: rgba(0, 0, 0, 0.15);
   --dropdown-shadow: rgba(0, 0, 0, 0.1);
+  --color-scrollbar-thumb: rgba(0, 0, 0, 0.34);
+  --color-scrollbar-track: rgba(0, 0, 0, 0.1);
 }
 
 :root[data-theme="light"] {
