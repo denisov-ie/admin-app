@@ -1,0 +1,6 @@
+._ {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 3rem 0 3rem;
+  height: calc(100vh - 2rem);
+}

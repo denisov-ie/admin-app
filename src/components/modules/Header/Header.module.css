@@ -1,0 +1,13 @@
+._ {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: inherit;
+  width: 100%;
+  height: 2rem;
+  padding-bottom: 2rem;
+}
+
+.title {
+  color: var(--color-day-black, var(--color-night-black));
+}

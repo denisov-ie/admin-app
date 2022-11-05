@@ -1,0 +1,13 @@
+._ {
+  width: 12rem;
+}
+
+.dropdownWrapper {
+  top: calc(100% + 0.25rem);
+  right: 0;
+  cursor: pointer;
+}
+
+.cursor div {
+  cursor: pointer;
+}

@@ -1,0 +1,64 @@
+._ {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+}
+
+.icon {
+  position: absolute;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  width: 1rem;
+  height: 1rem;
+  fill: var(--color-day-white-fixed);
+  transition: opacity 0.25s ease-in;
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: inherit;
+  font-size: inherit;
+  color: var(--color-day-black, var(--color-night-black));
+}
+
+.withText {
+  margin-left: 0.5rem;
+}
+
+.withTextOnly {
+  margin-left: 0;
+}
+
+.area {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  background-color: var(--color-day-white, var(--color-night-white));
+  border: 0.0625rem solid
+    var(--color-day-light-blue, var(--color-night-light-blue));
+  border-radius: 0.9375rem;
+  box-sizing: border-box;
+}
+
+.area:active {
+  background-color: var(--color-day-light-blue, var(--color-night-light-blue));
+}
+
+.area:checked {
+  background-color: var(--color-blue);
+  border-color: var(--color-blue);
+  border-radius: 0.9375rem;
+}
+
+.area:checked ~ .icon {
+  opacity: 1;
+}
+
+.area:checked ~ .text {
+  color: var(--color-blue);
+}

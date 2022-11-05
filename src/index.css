@@ -1,13 +1,37 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url(https://fonts.googleapis.com/css?family=Ubuntu&subset=cyrillic,latin);
+
+:root {
+  --color-day-white-fixed: #ffffff;
+  --color-day-dark-blue: #287ed5;
+  --color-day-medium-blue: #1e65a4;
+  --color-day-medium-black: #1c1c1c;
+  --color-day-light-black: #606060;
+  --color-blue: #459df5;
+  --color-red: #f53152;
+  --color-orange: #ff8c56;
+  --color-green: #0fb864;
+  --dropdown-shadow: rgba(0, 0, 0, 0.1);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+:root[data-theme="light"] {
+  --color-day-white: #ffffff;
+  --color-day-black: #000000;
+  --color-day-light-blue: #bad8f5;
+  --color-day-white-blue: #ebf0f5;
+}
+
+:root[data-theme="dark"] {
+  --color-night-white: #2b2d33;
+  --color-night-black: #bcc4cc;
+  --color-night-light-blue: #454e52;
+  --color-night-white-blue: #171b1f;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-day-white, var(--color-night-white));
+  min-width: 66rem;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 0.8125rem;
+  line-height: 1rem;
 }
