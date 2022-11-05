@@ -4,10 +4,6 @@ import styles from "./Input.module.css";
 
 const noop = () => {};
 
-function Component({ element, className }) {
-  return <div className={className}>{element}</div>;
-}
-
 export const DEFAULT_PREFIX = {
   text: (text, className = styles.prefixTextDefault) => (
     <span className={className}>{text}</span>
@@ -49,7 +45,7 @@ function Input({
       <label className={styles.label}>
         {label && <div className={styles.labelDivider}>{label}</div>}
         <div className={styles.field}>
-          {prefix && <Component element={prefix} className={styles.prefix} />}
+          {prefix && <div className={styles.prefix}>{prefix}</div>}
           <input
             className={styles.area}
             placeholder={placeholder}
@@ -58,9 +54,7 @@ function Input({
             value={value}
             {...props}
           />
-          {postfix && (
-            <Component element={postfix} className={styles.postfix} />
-          )}
+          {postfix && <div className={styles.postfix}>{postfix}</div>}
           {!disabled && onClear && value.length > 0 && (
             <button className={styles.button} onClick={onClear}>
               <Icon name={icon.xLarge} className={styles.iconCross} />

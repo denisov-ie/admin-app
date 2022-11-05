@@ -5,7 +5,7 @@ import {
   FilterContext,
   FILTER_TYPES as filterType,
 } from "components/context/FilterContext";
-import styles from "./AmountFilter.module.css";
+import styles from "components/modules/Filter/AmountFilter/AmountFilter.module.css";
 
 function AmountFilter({ className }) {
   const baseClassNames = classnames(styles._, className);
