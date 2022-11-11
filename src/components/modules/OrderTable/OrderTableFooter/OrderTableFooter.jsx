@@ -16,16 +16,31 @@ import Radio from "components/shared/Radio";
 import { Input } from "components/shared/Input";
 import { useState } from "react";
 import styles from "components/modules/OrderTable/OrderTableFooter/OrderTableFooter.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setPageNumber } from "components/redux/slices/paginationSlice";
+import { getPaginatedOrders } from "components/redux/selectors";
+import OrderTablePages from "components/modules/OrderTable/OrderTablePages";
 
 function OrderTableFooter() {
   const [page, setPage] = useState("");
 
-  const handleOnChangePageNumber = (e) => {
-    setPage(e.target.value);
+  const dispatch = useDispatch();
+
+  const pageCount = useSelector(getPaginatedOrders)[1];
+
+  const handleOnChangePageNumber = ({ target: { value } }) => {
+    setPage(value);
   };
 
   const handleOnClearPageNumber = () => {
     setPage("");
+  };
+
+  const handlePageSelectKeyPress = ({ which }) => {
+    if (which === 13 && page > 0 && page <= pageCount) {
+      const pageNumber = page - 1;
+      dispatch(setPageNumber({ pageNumber }));
+    }
   };
 
   return (
@@ -69,20 +84,8 @@ function OrderTableFooter() {
         </Dropdown>
       </div>
       <div className={styles.rightBlock}>
-        <div className={styles.pages}>
-          <Button size={size.small} color={color.blue}>
-            1
-          </Button>
-          <Button size={size.small} color={color.blueReverse}>
-            2
-          </Button>
-          <Button size={size.small} color={color.blueReverse}>
-            3
-          </Button>
-          <span>...</span>
-          <Button size={size.small} color={color.blueReverse}>
-            18
-          </Button>
+        <div>
+          <OrderTablePages />
         </div>
         <Dropdown
           className={styles.pageSelectionDropdownWrapper}
@@ -96,9 +99,13 @@ function OrderTableFooter() {
             <Input
               label="Номер страницы"
               placeholder="Введите номер"
-              invalid={!/^\d*$|^$/.test(page)}
+              invalid={
+                !/^$/.test(page) &&
+                !(/^\d*$/.test(page) && page > 0 && page <= pageCount)
+              }
               onClear={handleOnClearPageNumber}
               onChange={handleOnChangePageNumber}
+              onKeyDown={handlePageSelectKeyPress}
               value={page}
             />
           </DropdownSingleItem>

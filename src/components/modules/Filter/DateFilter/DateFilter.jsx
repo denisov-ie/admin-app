@@ -1,17 +1,33 @@
 import classnames from "classnames";
-import { useContext } from "react";
 import { DEFAULT_PREFIX as prefix, Input } from "components/shared/Input";
-import {
-  FilterContext,
-  FILTER_TYPES as filterType,
-} from "components/context/FilterContext";
-import styles from "components/modules/Filter/DateFilter/DateFilter.module.css";
+import styles from "./DateFilter.module.css";
 
-function DateFilter({ className }) {
+function DateFilter({ className, state }) {
   const baseClassNames = classnames(styles._, className);
 
-  const { filters, handleFilterChange, handleFilterClear } =
-    useContext(FilterContext);
+  const [filters, setFilters] = state;
+
+  const handleDateFromFilterChange = ({ target: { value } }) => {
+    filters.dateFrom = value;
+    setFilters({ ...filters });
+  };
+
+  const handleDateToFilterChange = ({ target: { value } }) => {
+    filters.dateTo = value;
+    setFilters({ ...filters });
+  };
+
+  const handleDateFromFilterClear = () => {
+    filters.dateFrom = "";
+    setFilters({ ...filters });
+  };
+
+  const handleDateToFilterClear = () => {
+    filters.dateTo = "";
+    setFilters({ ...filters });
+  };
+
+  const datePattern = /^[0-9]{2}.[0-9]{2}.[0-9]{4}$|^$/;
 
   return (
     <div className={baseClassNames}>
@@ -20,17 +36,17 @@ function DateFilter({ className }) {
         placeholder="dd.mm.yyyy"
         prefix={prefix.text("с")}
         value={filters.dateFrom}
-        invalid={!/^[0-9]{2}.[0-9]{2}.[0-9]{4}$|^$/.test(filters.dateFrom)}
-        onChange={(e) => handleFilterChange(e, filterType.dateFrom)}
-        onClear={() => handleFilterClear(filterType.dateFrom)}
+        invalid={!datePattern.test(filters.dateFrom)}
+        onChange={handleDateFromFilterChange}
+        onClear={handleDateFromFilterClear}
       />
       <Input
         placeholder="dd.mm.yyyy"
         prefix={prefix.text("по")}
         value={filters.dateTo}
-        invalid={!/^[0-9]{2}.[0-9]{2}.[0-9]{4}$|^$/.test(filters.dateTo)}
-        onChange={(e) => handleFilterChange(e, filterType.dateTo)}
-        onClear={() => handleFilterClear(filterType.dateTo)}
+        invalid={!datePattern.test(filters.dateTo)}
+        onChange={handleDateToFilterChange}
+        onClear={handleDateToFilterClear}
       />
     </div>
   );

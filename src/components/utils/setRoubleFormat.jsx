@@ -1,4 +1,4 @@
-function convertToRoubles(amount) {
+function setRoubleFormat(amount) {
   return amount.toLocaleString("ru-Ru", {
     style: "currency",
     currency: "RUB",
@@ -7,4 +7,4 @@ function convertToRoubles(amount) {
   });
 }
 
-export default convertToRoubles;
+export default setRoubleFormat;

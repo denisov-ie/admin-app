@@ -1,17 +1,33 @@
 import classnames from "classnames";
-import { useContext } from "react";
 import { DEFAULT_PREFIX as prefix, Input } from "components/shared/Input";
-import {
-  FilterContext,
-  FILTER_TYPES as filterType,
-} from "components/context/FilterContext";
-import styles from "components/modules/Filter/AmountFilter/AmountFilter.module.css";
+import styles from "./AmountFilter.module.css";
 
-function AmountFilter({ className }) {
+function AmountFilter({ className, state }) {
   const baseClassNames = classnames(styles._, className);
 
-  const { filters, handleFilterChange, handleFilterClear } =
-    useContext(FilterContext);
+  const [filters, setFilters] = state;
+
+  const handleAmountFromFilterChange = ({ target: { value } }) => {
+    filters.amountFrom = value;
+    setFilters({ ...filters });
+  };
+
+  const handleAmountToFilterChange = ({ target: { value } }) => {
+    filters.amountTo = value;
+    setFilters({ ...filters });
+  };
+
+  const handleAmountFromFilterClear = () => {
+    filters.amountFrom = "";
+    setFilters({ ...filters });
+  };
+
+  const handleAmountToFilterClear = () => {
+    filters.amountTo = "";
+    setFilters({ ...filters });
+  };
+
+  const amountPattern = /^\d+(,\d{1,2})?$|^$/;
 
   return (
     <div className={baseClassNames}>
@@ -20,17 +36,17 @@ function AmountFilter({ className }) {
         placeholder="₽"
         prefix={prefix.text("от")}
         value={filters.amountFrom}
-        invalid={!/^\d+(,\d{1,2})?$|^$/.test(filters.amountFrom)}
-        onChange={(e) => handleFilterChange(e, filterType.amountFrom)}
-        onClear={() => handleFilterClear(filterType.amountFrom)}
+        invalid={!amountPattern.test(filters.amountFrom)}
+        onChange={handleAmountFromFilterChange}
+        onClear={handleAmountFromFilterClear}
       />
       <Input
         placeholder="₽"
         prefix={prefix.text("до")}
         value={filters.amountTo}
-        invalid={!/^\d+(,\d{1,2})?$|^$/.test(filters.amountTo)}
-        onChange={(e) => handleFilterChange(e, filterType.amountTo)}
-        onClear={() => handleFilterClear(filterType.amountTo)}
+        invalid={!amountPattern.test(filters.amountTo)}
+        onChange={handleAmountToFilterChange}
+        onClear={handleAmountToFilterClear}
       />
     </div>
   );

@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import {
   Button,
   BUTTON_COLOR as color,
@@ -10,22 +10,57 @@ import { Icon, ICON_TYPE as icon } from "components/shared/Icon";
 import StatusFilter from "components/modules/Filter/StatusFilter";
 import AmountFilter from "components/modules/Filter/AmountFilter";
 import DateFilter from "components/modules/Filter/DateFilter";
+import { useDispatch } from "react-redux";
 import {
-  FILTER_TYPES as filterType,
-  FilterContext,
-} from "components/context/FilterContext";
+  clearFilterFields,
+  initialState,
+  setFilterFields,
+} from "components/redux/slices/filterSlice";
+
+import { clearSortParams } from "components/redux/slices/sortSlice";
+import { setPageNumber } from "components/redux/slices/paginationSlice";
 import styles from "./Filter.module.css";
 
 function Filter({ className }) {
   const baseClassNames = classnames(styles._, className);
 
-  const { filters, handleFilterChange, handleClearAllFilters } =
-    useContext(FilterContext);
+  const dispatch = useDispatch();
 
   const [isActive, setIsActive] = useState(false);
 
+  const [filters, setFilters] = useState({ ...initialState });
+
   const handleShowExtendedFilters = () => {
     setIsActive(!isActive);
+  };
+
+  const handleSearchFilterChange = ({ target: { value } }) => {
+    filters.search = value;
+    setFilters({ ...filters });
+  };
+
+  const handleSearchFilterClear = () => {
+    filters.search = "";
+    setFilters({ ...filters });
+  };
+
+  const handleClearAllFilters = () => {
+    setFilters({ ...initialState });
+    dispatch(setPageNumber({ pageNumber: 0 }));
+    dispatch(clearFilterFields());
+    dispatch(clearSortParams());
+  };
+
+  const handleSearchFilterKeyPress = ({ which }) => {
+    if (which === 13) {
+      dispatch(setPageNumber({ pageNumber: 0 }));
+      dispatch(setFilterFields({ filters }));
+    }
+  };
+
+  const handleApplyFiltersClick = () => {
+    dispatch(setPageNumber({ pageNumber: 0 }));
+    dispatch(setFilterFields({ filters }));
   };
 
   const filterButtonColor = isActive ? color.blue : color.blueReverse;
@@ -37,9 +72,10 @@ function Filter({ className }) {
           <div className={styles.searchbarWrapper}>
             <Searchbar
               placeholder="Номер заказа или ФИО"
+              onChange={handleSearchFilterChange}
+              onClear={handleSearchFilterClear}
               value={filters.search}
-              onChange={(e) => handleFilterChange(e, filterType.search)}
-              onClear={() => handleClearAllFilters(filterType.search)}
+              onKeyDown={handleSearchFilterKeyPress}
             />
           </div>
           <div className={styles.filterButtonWrapper}>
@@ -70,13 +106,23 @@ function Filter({ className }) {
       </div>
       {isActive && (
         <div className={styles.extendedBlock}>
-          <DateFilter className={styles.dateFilter} />
-          <StatusFilter className={styles.stateFilter} />
-          <AmountFilter className={styles.amountFilter} />
+          <DateFilter
+            className={styles.dateFilter}
+            state={[filters, setFilters]}
+          />
+          <StatusFilter
+            className={styles.stateFilter}
+            state={[filters, setFilters]}
+          />
+          <AmountFilter
+            className={styles.amountFilter}
+            state={[filters, setFilters]}
+          />
           <Button
             className={styles.applyFilterButton}
             color={color.blueReverse}
             size={size.medium}
+            onClick={handleApplyFiltersClick}
           >
             Применить
           </Button>

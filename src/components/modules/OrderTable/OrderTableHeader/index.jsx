@@ -1,3 +1,4 @@
-import OrderTableHeader from "components/modules/OrderTable/OrderTableHeader/OrderTableHeader";
-
-export default OrderTableHeader;
+export {
+  default as OrderTableHeader,
+  SORTABLE_COLUMNS,
+} from "components/modules/OrderTable/OrderTableHeader/OrderTableHeader";
