@@ -20,8 +20,6 @@ export const getSortDirection = (state) => state.sort.sortDirection;
 
 export const getPageNumber = (state) => state.pagination.pageNumber;
 
-export const getOrdersPerPage = (state) => state.pagination.ordersPerPage;
-
 export const getRawOrders = (state) => state.orders.data;
 
 export const getFilteredOrders = (state) =>
@@ -42,6 +40,6 @@ export const getSortedOrders = (state) =>
   );
 
 export const getPaginatedOrders = (state) => {
-  const chunks = _.chunk(getSortedOrders(state), getOrdersPerPage(state));
+  const chunks = _.chunk(getSortedOrders(state), 20);
   return [chunks[getPageNumber(state)] || [], chunks.length];
 };
