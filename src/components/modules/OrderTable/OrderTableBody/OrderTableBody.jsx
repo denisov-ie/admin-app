@@ -11,6 +11,11 @@ function OrderTableBody() {
 
   return (
     <TableBody>
+      {orders.length === 0 && (
+        <div className={styles.message}>
+          По вашему запросу ничего не найдено
+        </div>
+      )}
       {orders.map((order) => (
         <TableRow key={order.id}>
           <TableCell className={styles.checkbox}>
