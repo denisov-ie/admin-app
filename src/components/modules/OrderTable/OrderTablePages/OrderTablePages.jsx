@@ -50,6 +50,10 @@ function OrderTablePages() {
     if (pageNumber < 2) {
       resultPages.push(pages[1]);
       resultPages.push(pages[2]);
+    } else if (pageNumber === pageCount - 1) {
+      resultPages.push(pages[pageNumber - 2]);
+      resultPages.push(pages[pageNumber - 1]);
+      resultPages.push(pages[pageNumber]);
     } else {
       resultPages.push(pages[pageNumber - 1]);
       resultPages.push(pages[pageNumber]);

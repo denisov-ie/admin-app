@@ -43,5 +43,5 @@ export const getSortedOrders = (state) =>
 
 export const getPaginatedOrders = (state) => {
   const chunks = _.chunk(getSortedOrders(state), getOrdersPerPage(state));
-  return [chunks[getPageNumber(state)], chunks.length];
+  return [chunks[getPageNumber(state)] || [], chunks.length];
 };
