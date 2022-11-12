@@ -15,13 +15,15 @@ function TableHeaderCell({ className, active, direction, onClick, children }) {
   });
 
   const iconClassNames = classnames(styles.icon, {
-    [styles.direction]: direction === SORT_DIRECTION.descending,
+    [styles.direction]: direction === SORT_DIRECTION.ascending,
   });
 
   return (
     <TableCell className={baseClassNames} onClick={onClick}>
       {children}
-      {onClick && <Icon name={icon.vArrow} className={iconClassNames} />}
+      {onClick && direction && (
+        <Icon name={icon.vArrow} className={iconClassNames} />
+      )}
     </TableCell>
   );
 }

@@ -33,7 +33,7 @@
 body {
   margin: 0;
   background-color: var(--color-day-white, var(--color-night-white));
-  min-width: 66rem;
+  min-width: 70rem;
   font-family: "Ubuntu", sans-serif;
   font-size: 0.8125rem;
   line-height: 1rem;

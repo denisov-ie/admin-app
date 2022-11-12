@@ -1,10 +1,10 @@
 import { ThemeProvider } from "components/context/ThemeContext";
-import MainPage from "components/pages/MainPage";
+import OrderPage from "components/features/OrderPage";
 
 function App() {
   return (
     <ThemeProvider>
-      <MainPage />
+      <OrderPage />
     </ThemeProvider>
   );
 }

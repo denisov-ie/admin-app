@@ -22,10 +22,7 @@
   display: flex;
 }
 
-._:hover {
+.clickable:hover {
   background: rgba(0, 0, 0, 0.15);
-}
-
-.clickable {
   cursor: pointer;
 }
