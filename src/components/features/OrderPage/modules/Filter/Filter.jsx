@@ -77,6 +77,7 @@ function Filter({ className }) {
         <div className={styles.leftBlock}>
           <div className={styles.searchbarWrapper}>
             <Searchbar
+              autoFocus
               placeholder="Номер заказа или ФИО"
               onChange={handleSearchFilterChange}
               onClear={handleSearchFilterClear}
