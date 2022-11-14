@@ -64,6 +64,7 @@ function OrderTableModalBody({ orderState, codeState, errorsState }) {
       <div className={styles.wrapper}>
         <Input value={order.date} label="Дата и время заказа" disabled />
         <Input
+          autoFocus
           value={order.name}
           label="ФИО покупателя"
           placeholder="Введите ФИО покупателя"
