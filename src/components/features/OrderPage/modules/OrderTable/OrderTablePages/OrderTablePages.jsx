@@ -9,6 +9,7 @@ import {
   getPageNumber,
   getPaginatedOrders,
 } from "components/features/OrderPage/model/selectors";
+import { clearSelection } from "components/features/OrderPage/model/slices/selectionSlice";
 import styles from "./OrderTablePages.module.css";
 
 function OrderTablePages() {
@@ -17,6 +18,7 @@ function OrderTablePages() {
   const dispatch = useDispatch();
 
   const handleSelectPageClick = (pageNumber) => {
+    dispatch(clearSelection());
     dispatch(setPageNumber({ pageNumber }));
   };
 

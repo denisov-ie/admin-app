@@ -3,6 +3,26 @@
   flex: 1;
   flex-direction: column;
   overflow: auto;
+  padding: 2rem 0 3rem 1rem;
+}
+
+.wrapper {
+  display: grid;
+  grid-auto-flow: row;
+  grid-row-gap: 2rem;
+  align-items: center;
+  width: 27.5rem;
+}
+
+.dropdownWrapper {
+  transform: translateY(-100%);
+  top: 1.25rem;
+  right: 0;
+  cursor: pointer;
+}
+
+.cursor div {
+  cursor: pointer;
 }
 
 ._::-webkit-scrollbar {

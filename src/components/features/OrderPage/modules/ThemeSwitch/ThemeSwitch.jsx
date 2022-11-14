@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import {
   Dropdown,
   DropdownItemDivider,
@@ -20,8 +20,11 @@ import styles from "./ThemeSwitch.module.css";
 function ThemeSwitch({ className }) {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
+  const [isSwitcherActive, setIsSwitcherActive] = useState(false);
+
   const handleThemeSelection = (currentTheme) => {
     toggleTheme(currentTheme);
+    setIsSwitcherActive(false);
   };
 
   const themeButtonText = isDarkTheme(theme) ? "Темная тема" : "Светлая тема";
@@ -40,6 +43,7 @@ function ThemeSwitch({ className }) {
     <div className={className}>
       <Dropdown
         className={styles.dropdownWrapper}
+        outerState={[isSwitcherActive, setIsSwitcherActive]}
         trigger={
           <Button
             color={color.blueReverse}

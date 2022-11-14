@@ -9,8 +9,15 @@ import { setSortableColumn } from "components/features/OrderPage/model/slices/so
 import {
   getSortDirection,
   getSortableColumn,
+  getPaginatedOrders,
+  getSelectedOrderIds,
 } from "components/features/OrderPage/model/selectors";
 import { setPageNumber } from "components/features/OrderPage/model/slices/paginationSlice";
+import {
+  addToSelection,
+  clearSelection,
+  removeFromSelection,
+} from "components/features/OrderPage/model/slices/selectionSlice";
 import styles from "../OrderTable.module.css";
 
 export const SORTABLE_COLUMNS = {
@@ -27,8 +34,13 @@ function OrderTableHeader() {
 
   const sortableColumn = useSelector(getSortableColumn);
 
+  const { selectedOrderIds } = useSelector(getSelectedOrderIds);
+
+  const { orders } = useSelector(getPaginatedOrders);
+
   const handleSortClick = (column) => {
     dispatch(setPageNumber({ pageNumber: 0 }));
+    dispatch(clearSelection());
     dispatch(
       setSortableColumn({
         sortableColumn: column,
@@ -38,10 +50,26 @@ function OrderTableHeader() {
     );
   };
 
+  const handleCheckboxChange = ({ target: { checked } }) => {
+    for (const order of orders) {
+      const { id } = order;
+      if (!selectedOrderIds.includes(id)) {
+        dispatch(addToSelection({ id }));
+      } else if (!checked) {
+        dispatch(removeFromSelection({ id }));
+      }
+    }
+  };
+
   return (
     <TableHeader>
       <TableHeaderCell className={styles.checkbox}>
-        <Checkbox />
+        <Checkbox
+          onChange={(e) => handleCheckboxChange(e)}
+          checked={
+            selectedOrderIds.length === orders.length && orders.length > 0
+          }
+        />
       </TableHeaderCell>
       <TableHeaderCell className={styles.orderNumber}>#</TableHeaderCell>
       <TableHeaderCell

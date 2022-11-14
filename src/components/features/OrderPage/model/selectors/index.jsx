@@ -40,7 +40,11 @@ export const getSortDirection = (state) => state.sort.sortDirection;
 
 export const getPageNumber = (state) => state.pagination.pageNumber;
 
-export const getRawOrders = (state) => state.orders;
+export const getOrdersIsLoading = (state) => state.orders.isLoading;
+
+export const getRawOrders = (state) => state.orders.ordersData;
+
+export const getSelectedOrderIds = (state) => state.selection;
 
 export const getFilteredOrders = (state) => {
   const isEveryCheckTrue = (filters) =>
@@ -85,4 +89,10 @@ export const getPaginatedOrders = (state) => {
     orders: chunks[getPageNumber(state)] || [],
     pageCount: chunks.length,
   };
+};
+
+export const getOrdersBySelectedIds = (state) => {
+  const orders = [...getRawOrders(state)];
+  const { selectedOrderIds } = getSelectedOrderIds(state);
+  return orders.filter((order) => selectedOrderIds.includes(order.id));
 };

@@ -2,10 +2,10 @@ import classnames from "classnames";
 import { DEFAULT_PREFIX as prefix, Input } from "components/shared/Input";
 import styles from "./AmountFilter.module.css";
 
-function AmountFilter({ className, state }) {
+function AmountFilter({ className, filtersState }) {
   const baseClassNames = classnames(styles._, className);
 
-  const [filters, setFilters] = state;
+  const [filters, setFilters] = filtersState;
 
   const handleAmountFromFilterChange = ({ target: { value } }) => {
     filters.amountFrom = value;

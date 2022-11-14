@@ -2,10 +2,10 @@ import classnames from "classnames";
 import { DEFAULT_PREFIX as prefix, Input } from "components/shared/Input";
 import styles from "./DateFilter.module.css";
 
-function DateFilter({ className, state }) {
+function DateFilter({ className, filtersState }) {
   const baseClassNames = classnames(styles._, className);
 
-  const [filters, setFilters] = state;
+  const [filters, setFilters] = filtersState;
 
   const handleDateFromFilterChange = ({ target: { value } }) => {
     filters.dateFrom = value;

@@ -10,7 +10,7 @@ import { Icon, ICON_TYPE as icon } from "components/shared/Icon";
 import StatusFilter from "components/features/OrderPage/modules/Filter/StatusFilter";
 import AmountFilter from "components/features/OrderPage/modules/Filter/AmountFilter";
 import DateFilter from "components/features/OrderPage/modules/Filter/DateFilter";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   clearFilterFields,
   initialState,
@@ -18,6 +18,8 @@ import {
 } from "components/features/OrderPage/model/slices/filterSlice";
 import { clearSortParams } from "components/features/OrderPage/model/slices/sortSlice";
 import { setPageNumber } from "components/features/OrderPage/model/slices/paginationSlice";
+import { clearSelection } from "components/features/OrderPage/model/slices/selectionSlice";
+import { getOrdersIsLoading } from "components/features/OrderPage/model/selectors";
 import styles from "./Filter.module.css";
 
 function Filter({ className }) {
@@ -28,6 +30,8 @@ function Filter({ className }) {
   const [isActive, setIsActive] = useState(false);
 
   const [filters, setFilters] = useState({ ...initialState });
+
+  const isLoading = useSelector(getOrdersIsLoading);
 
   const handleShowExtendedFilters = () => {
     setIsActive(!isActive);
@@ -45,6 +49,7 @@ function Filter({ className }) {
 
   const handleClearAllFilters = () => {
     setFilters({ ...initialState });
+    dispatch(clearSelection());
     dispatch(setPageNumber({ pageNumber: 0 }));
     dispatch(clearFilterFields());
     dispatch(clearSortParams());
@@ -52,12 +57,14 @@ function Filter({ className }) {
 
   const handleSearchFilterKeyPress = ({ which }) => {
     if (which === 13) {
+      dispatch(clearSelection());
       dispatch(setPageNumber({ pageNumber: 0 }));
       dispatch(setFilterFields({ filters }));
     }
   };
 
   const handleApplyFiltersClick = () => {
+    dispatch(clearSelection());
     dispatch(setPageNumber({ pageNumber: 0 }));
     dispatch(setFilterFields({ filters }));
   };
@@ -98,24 +105,26 @@ function Filter({ className }) {
             </Button>
           )}
         </div>
-        <div className={styles.rightBlock}>
-          <Icon name={icon.refresh} className={styles.icon} />
-          Загрузка
-        </div>
+        {isLoading && (
+          <div className={styles.rightBlock}>
+            <Icon name={icon.refresh} className={styles.icon} />
+            Загрузка
+          </div>
+        )}
       </div>
       {isActive && (
         <div className={styles.extendedBlock}>
           <DateFilter
             className={styles.dateFilter}
-            state={[filters, setFilters]}
+            filtersState={[filters, setFilters]}
           />
           <StatusFilter
             className={styles.stateFilter}
-            state={[filters, setFilters]}
+            filtersState={[filters, setFilters]}
           />
           <AmountFilter
             className={styles.amountFilter}
-            state={[filters, setFilters]}
+            filtersState={[filters, setFilters]}
           />
           <Button
             className={styles.applyFilterButton}

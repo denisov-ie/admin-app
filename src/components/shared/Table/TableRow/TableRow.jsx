@@ -1,10 +1,16 @@
 import classnames from "classnames";
 import styles from "./TableRow.module.css";
 
-function TableRow({ className, children }) {
-  const baseClassNames = classnames(styles._, className);
+function TableRow({ className, checked, onClick, children }) {
+  const baseClassNames = classnames(styles._, className, {
+    [styles.checked]: checked,
+  });
 
-  return <div className={baseClassNames}>{children}</div>;
+  return (
+    <div role="presentation" className={baseClassNames} onClick={onClick}>
+      {children}
+    </div>
+  );
 }
 
 export default TableRow;

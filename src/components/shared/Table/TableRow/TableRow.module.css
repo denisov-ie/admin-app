@@ -8,3 +8,7 @@
   border-bottom: 0.0625rem solid
     var(--color-day-white-blue, var(--color-night-white-blue));
 }
+
+.checked {
+  background-color: var(--color-day-white-blue, var(--color-night-white-blue));
+}

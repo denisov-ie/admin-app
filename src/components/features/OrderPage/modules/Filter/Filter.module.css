@@ -50,8 +50,18 @@
   height: 1rem;
   stroke: var(--color-blue);
   margin-right: 0.5rem;
+  animation: rotating 2s linear infinite;
 }
 
 .applyFilterButton {
   padding: 0.5rem 0.5625rem;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

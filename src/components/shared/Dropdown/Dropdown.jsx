@@ -18,10 +18,14 @@ export function DropdownItemDivider() {
   return <div className={styles.itemDivider} />;
 }
 
-function Dropdown({ className, title, trigger, children }) {
+function Dropdown({ className, title, trigger, outerState, children }) {
   const baseClassNames = classnames(styles.dropdown, className);
 
-  const [isActive, setIsActive] = useState(false);
+  let [isActive, setIsActive] = useState(false);
+
+  if (outerState) {
+    [isActive, setIsActive] = outerState;
+  }
 
   const triggerRef = useRef();
 

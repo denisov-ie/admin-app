@@ -1,43 +1,76 @@
-import { TableBody, TableCell, TableRow } from "components/shared/Table";
-import Checkbox from "components/shared/Checkbox";
-import { Status } from "components/features/OrderPage/modules/Status";
-import setRoubleFormat from "components/shared/utils/setRoubleFormat";
-import { useSelector } from "react-redux";
-import { getPaginatedOrders } from "components/features/OrderPage/model/selectors";
+import { TableBody } from "components/shared/Table";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getOrdersIsLoading,
+  getPaginatedOrders,
+  getSelectedOrderIds,
+} from "components/features/OrderPage/model/selectors";
+import {
+  addToSelection,
+  clearSelection,
+  removeFromSelection,
+} from "components/features/OrderPage/model/slices/selectionSlice";
+import OrderTableRow from "components/features/OrderPage/modules/OrderTable/OrderTableRow";
+import { useEffect, useState } from "react";
+import { loadOrders } from "components/features/OrderPage/model/slices/orderSlice";
+import OrderTableModal from "components/features/OrderPage/modules/OrderTable/OrderTableModal";
 import styles from "../OrderTable.module.css";
 
 function OrderTableBody() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadOrders());
+  }, [dispatch]);
+
+  const [isModalActive, setIsModalActive] = useState(false);
+
   const { orders } = useSelector(getPaginatedOrders);
 
+  const { selectedOrderIds } = useSelector(getSelectedOrderIds);
+
+  const isLoading = useSelector(getOrdersIsLoading);
+
+  const handleCheckboxChange = (e, id) => {
+    dispatch(
+      selectedOrderIds.includes(id)
+        ? removeFromSelection({ id })
+        : addToSelection({ id })
+    );
+  };
+
+  const handleRowClick = (e, id) => {
+    if (e.target.tagName === "DIV") {
+      dispatch(clearSelection());
+      dispatch(addToSelection({ id }));
+      setIsModalActive(true);
+    }
+  };
+
   return (
-    <TableBody>
-      {orders.length === 0 && (
-        <div className={styles.message}>
-          По вашему запросу ничего не найдено
-        </div>
+    <>
+      <TableBody>
+        {orders.length === 0 && (
+          <div className={styles.message}>
+            {isLoading
+              ? "Данные загружаются"
+              : "По вашему запросу ничего не найдено"}
+          </div>
+        )}
+        {orders.map((order) => (
+          <OrderTableRow
+            key={order.id}
+            order={order}
+            onClick={(e) => handleRowClick(e, order.id)}
+            onChange={(e) => handleCheckboxChange(e, order.id)}
+            checked={selectedOrderIds.includes(order.id)}
+          />
+        ))}
+      </TableBody>
+      {isModalActive && (
+        <OrderTableModal isModalActiveSetter={setIsModalActive} />
       )}
-      {orders.map((order) => (
-        <TableRow key={order.id}>
-          <TableCell className={styles.checkbox}>
-            <Checkbox id={order.id} name="order" />
-          </TableCell>
-          <TableCell className={styles.orderNumber}>
-            {order.orderNumber}
-          </TableCell>
-          <TableCell className={styles.date}>{order.date}</TableCell>
-          <TableCell className={styles.status}>
-            <Status status={order.status} />
-          </TableCell>
-          <TableCell className={styles.positionCount}>
-            {order.positionCount === 0 ? "-" : order.positionCount}
-          </TableCell>
-          <TableCell className={styles.amount}>
-            {order.amount === 0 ? "-" : setRoubleFormat(order.amount)}
-          </TableCell>
-          <TableCell className={styles.name}>{order.name}</TableCell>
-        </TableRow>
-      ))}
-    </TableBody>
+    </>
   );
 }
 

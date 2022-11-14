@@ -6,10 +6,10 @@ import Checkbox from "components/shared/Checkbox";
 import { STATUSES as status } from "components/features/OrderPage/modules/Status";
 import styles from "./StatusFilter.module.css";
 
-function StatusFilter({ className, state }) {
+function StatusFilter({ className, filtersState }) {
   const baseClassNames = classnames(styles._, className);
 
-  const [filters, setFilters] = state;
+  const [filters, setFilters] = filtersState;
 
   const handleStatusFilterChange = ({ target: { checked, value } }) => {
     let statusesCopy = [...filters.statuses];
