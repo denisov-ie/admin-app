@@ -13,10 +13,12 @@ function OrderTableModal({ isModalActiveSetter }) {
 
   const [code, setCode] = useState("");
 
-  const [errors, setErrors] = useState({
-    isNameError: false,
-    isCodeError: true,
-  });
+  const errorsInitialState = {
+    isNameError: { value: false, description: "ФИО покупателя" },
+    isCodeError: { value: true, description: "код подтверждения" },
+  };
+
+  const [errors, setErrors] = useState({ ...errorsInitialState });
 
   return (
     <div className={styles._}>

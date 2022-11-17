@@ -10,36 +10,43 @@ import {
   updateOrder,
 } from "components/features/OrderPage/model/slices/orderSlice";
 import { clearSelection } from "components/features/OrderPage/model/slices/selectionSlice";
+import { useState } from "react";
 import styles from "./OrderTableModalFooter.module.css";
 
 function OrderTableModalFooter({ order, errors, isModalActiveSetter }) {
   const dispatch = useDispatch();
 
+  const [isMessageActive, setIsMessageActive] = useState(false);
+
+  const invalidFields = [];
+
+  for (const key in errors) {
+    if (errors[key].value) {
+      invalidFields.push(errors[key].description);
+    }
+  }
+
   const handleSaveButtonClick = () => {
-    if (!errors.isNameError && !errors.isCodeError) {
+    if (invalidFields.length === 0) {
       dispatch(
         updateOrder({ id: order.id, field: field.status, value: order.status })
       );
       dispatch(
         updateOrder({ id: order.id, field: field.name, value: order.name })
       );
+      dispatch(clearSelection());
+      isModalActiveSetter(false);
+    } else {
+      setIsMessageActive(true);
+      setTimeout(() => setIsMessageActive(false), 3000);
     }
-    dispatch(clearSelection());
-    isModalActiveSetter(false);
   };
 
-  let message = "";
-
-  if (errors.isNameError && !errors.isCodeError) message = "Некорректное ФИО";
-
-  if (!errors.isNameError && errors.isCodeError) message = "Некорректный код";
-
-  if (errors.isNameError && errors.isCodeError)
-    message = "Некорректные ФИО и код";
+  const message = `Не сохранено: исправьте ${invalidFields.join(" и ")}`;
 
   return (
     <div className={styles._}>
-      <span className={styles.message}>{message}</span>
+      {isMessageActive && <span className={styles.message}>{message}</span>}
       <Button
         icon={icon.checkmark}
         color={color.blue}

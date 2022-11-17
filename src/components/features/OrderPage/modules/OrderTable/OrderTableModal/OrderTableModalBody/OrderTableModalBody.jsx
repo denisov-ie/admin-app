@@ -33,13 +33,14 @@ function OrderTableModalBody({ orderState, codeState, errorsState }) {
 
   const handleNameChange = ({ target: { value } }) => {
     order.name = value;
-    errors.isNameError = isInvalid(namePattern, value);
+    errors.isNameError.value = isInvalid(namePattern, value);
     setOrder({ ...order });
     setErrors({ ...errors });
   };
 
   const handleCodeChange = ({ target: { value } }) => {
-    errors.isCodeError = isInvalid(codePattern, value) || +value !== CODE_MOCK;
+    errors.isCodeError.value =
+      isInvalid(codePattern, value) || +value !== CODE_MOCK;
     setCode(value);
     setErrors({ ...errors });
   };
