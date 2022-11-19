@@ -1,4 +1,4 @@
 ._ {
   background-color: var(--color-blue);
-  border: none;
+  border: none !important;
 }

@@ -1,5 +1,10 @@
 ._ {
   color: var(--color-day-white-blue, var(--color-night-white-blue)) !important;
+  cursor: default;
+}
+
+.active {
+  background: rgba(0, 0, 0, 0.15);
 }
 
 .icon {
@@ -9,7 +14,15 @@
   fill: var(--color-day-white, var(--color-night-white));
 }
 
-._:hover {
+.direction {
+  transform: rotate(180deg);
+}
+
+.cellWrapper {
+  display: flex;
+}
+
+.clickable:hover {
   background: rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }

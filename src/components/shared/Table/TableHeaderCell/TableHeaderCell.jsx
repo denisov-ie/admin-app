@@ -3,13 +3,27 @@ import { Icon, ICON_TYPE as icon } from "components/shared/Icon";
 import { TableCell } from "components/shared/Table";
 import styles from "./TableHeaderCell.module.css";
 
-function TableHeaderCell({ className, sortable, children }) {
-  const baseClassNames = classnames(styles._, className);
+export const SORT_DIRECTION = {
+  ascending: "ascending",
+  descending: "descending",
+};
+
+function TableHeaderCell({ className, active, direction, onClick, children }) {
+  const baseClassNames = classnames(styles._, className, {
+    [styles.active]: active,
+    [styles.clickable]: onClick,
+  });
+
+  const iconClassNames = classnames(styles.icon, {
+    [styles.direction]: direction === SORT_DIRECTION.ascending,
+  });
 
   return (
-    <TableCell className={baseClassNames}>
+    <TableCell className={baseClassNames} onClick={onClick}>
       {children}
-      {sortable && <Icon name={icon.vArrow} className={styles.icon} />}
+      {onClick && direction && (
+        <Icon name={icon.vArrow} className={iconClassNames} />
+      )}
     </TableCell>
   );
 }

@@ -25,6 +25,10 @@ module.exports = {
     "jsx-a11y/label-has-associated-control": 0,
     "no-plusplus": 0,
     "no-restricted-syntax": 0,
+    "no-param-reassign": [
+      "error",
+      { props: true, ignorePropertyModificationsFor: ["state", "orders"] },
+    ],
   },
   settings: {
     "import/resolver": {
