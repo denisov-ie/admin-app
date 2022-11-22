@@ -1,5 +1,18 @@
 .checkbox {
   min-width: 2rem;
+  padding: 0;
+}
+
+.checkboxArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.checkboxArea:hover {
+  cursor: pointer;
 }
 
 .orderNumber {

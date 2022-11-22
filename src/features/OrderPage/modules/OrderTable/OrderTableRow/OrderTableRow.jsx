@@ -8,12 +8,14 @@ function OrderTableRow({ order, onChange, onClick, checked, expanded }) {
   return (
     <TableRow highlighted={checked || expanded} onClick={onClick}>
       <TableCell className={styles.checkbox}>
-        <Checkbox
-          id={order.id}
-          name="select"
-          onChange={onChange}
-          checked={checked}
-        />
+        <label className={styles.checkboxArea}>
+          <Checkbox
+            id={order.id}
+            name="select"
+            onChange={onChange}
+            checked={checked}
+          />
+        </label>
       </TableCell>
       <TableCell className={styles.orderNumber}>{order.orderNumber}</TableCell>
       <TableCell className={styles.date}>{order.date}</TableCell>

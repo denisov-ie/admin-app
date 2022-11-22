@@ -64,12 +64,14 @@ function OrderTableHeader() {
   return (
     <TableHeader>
       <TableHeaderCell className={styles.checkbox}>
-        <Checkbox
-          onChange={handleCheckboxChange}
-          checked={
-            selectedOrderIds.length === orders.length && orders.length > 0
-          }
-        />
+        <label className={styles.checkboxArea}>
+          <Checkbox
+            onChange={handleCheckboxChange}
+            checked={
+              selectedOrderIds.length === orders.length && orders.length > 0
+            }
+          />
+        </label>
       </TableHeaderCell>
       <TableHeaderCell className={styles.orderNumber}>#</TableHeaderCell>
       <TableHeaderCell
