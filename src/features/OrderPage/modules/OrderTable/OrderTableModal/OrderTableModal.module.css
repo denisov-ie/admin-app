@@ -1,0 +1,25 @@
+._ {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-day-shade);
+  z-index: 99;
+}
+
+.orderForm {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: absolute;
+  tab-index: 1;
+  top: 0;
+  right: 0;
+  width: 30rem;
+  height: 100%;
+  background-color: var(--color-day-white, var(--color-night-white));
+  box-shadow: 0 0 4rem var(--form-shadow-dark),
+    0 0 1rem var(--form-shadow-medium), 0 0 0.25rem var(--form-shadow-light);
+  overflow: hidden;
+}

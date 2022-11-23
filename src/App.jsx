@@ -1,5 +1,5 @@
-import { ThemeProvider } from "components/context/ThemeContext";
-import OrderPage from "components/features/OrderPage";
+import { ThemeProvider } from "context/ThemeContext";
+import OrderPage from "features/OrderPage";
 
 function App() {
   return (

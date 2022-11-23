@@ -1,0 +1,43 @@
+.checkbox {
+  min-width: 2rem;
+  padding: 0;
+}
+
+.checkboxArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.checkboxArea:hover {
+  cursor: pointer;
+}
+
+.orderNumber {
+  min-width: 6.75rem;
+}
+
+.date,
+.status {
+  min-width: 11rem;
+}
+
+.positionCount {
+  min-width: 6rem;
+}
+
+.amount {
+  min-width: 8rem;
+}
+
+.name {
+  width: 100%;
+}
+
+.message {
+  display: flex;
+  margin: 0 auto;
+  padding-top: 1rem;
+}
