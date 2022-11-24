@@ -11,7 +11,7 @@ import {
 } from "features/OrderPage/model/slices/orderSlice";
 import { clearSelection } from "features/OrderPage/model/slices/selectionSlice";
 import { useState } from "react";
-import styles from "./OrderTableModalFooter.module.css";
+import styles from "./ModalFooter.module.css";
 
 const CODE_MOCK = 123;
 
@@ -26,12 +26,7 @@ const getInvalidFields = (errors) => {
   return invalidFields;
 };
 
-function OrderTableModalFooter({
-  order,
-  code,
-  errorsState,
-  isModalActiveSetter,
-}) {
+function ModalFooter({ order, code, errorsState }) {
   const dispatch = useDispatch();
 
   const [errors, setErrors] = errorsState;
@@ -52,10 +47,9 @@ function OrderTableModalFooter({
         updateOrder({ id: order.id, field: field.name, value: order.name })
       );
       dispatch(clearSelection());
-      isModalActiveSetter(false);
     } else {
       setIsMessageActive(true);
-      setTimeout(() => setIsMessageActive(false), 3000);
+      setTimeout(() => setIsMessageActive(false), 2000);
     }
   };
 
@@ -76,4 +70,4 @@ function OrderTableModalFooter({
   );
 }
 
-export default OrderTableModalFooter;
+export default ModalFooter;

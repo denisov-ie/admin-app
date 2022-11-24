@@ -12,9 +12,9 @@ import {
   setOpenedOrderId,
 } from "features/OrderPage/model/slices/selectionSlice";
 import OrderTableRow from "features/OrderPage/modules/OrderTable/OrderTableRow";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { loadOrders } from "features/OrderPage/model/slices/orderSlice";
-import OrderTableModal from "features/OrderPage/modules/OrderTable/OrderTableModal";
+import Modal from "features/OrderPage/modules/Modal";
 import styles from "../OrderTable.module.css";
 
 function OrderTableBody() {
@@ -23,8 +23,6 @@ function OrderTableBody() {
   useEffect(() => {
     dispatch(loadOrders());
   }, [dispatch]);
-
-  const [isModalActive, setIsModalActive] = useState(false);
 
   const { orders } = useSelector(getPaginatedOrders);
 
@@ -39,11 +37,8 @@ function OrderTableBody() {
   };
 
   const handleRowClick = (e, id) => {
-    if (e.target.tagName === "DIV") {
-      dispatch(clearSelection());
-      dispatch(setOpenedOrderId({ id }));
-      setIsModalActive(true);
-    }
+    dispatch(clearSelection());
+    dispatch(setOpenedOrderId({ id }));
   };
 
   return (
@@ -67,9 +62,7 @@ function OrderTableBody() {
           />
         ))}
       </TableBody>
-      {isModalActive && (
-        <OrderTableModal isModalActiveSetter={setIsModalActive} />
-      )}
+      {openedOrderId && <Modal />}
     </>
   );
 }

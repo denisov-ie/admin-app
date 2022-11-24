@@ -13,9 +13,9 @@ import {
   DropdownSingleItem,
 } from "shared/components/Dropdown";
 import { useState } from "react";
-import styles from "./OrderTableModalHeader.module.css";
+import styles from "./ModalHeader.module.css";
 
-function OrderTableModalHeader({ isModalActiveSetter, order }) {
+function ModalHeader({ order }) {
   const dispatch = useDispatch();
 
   const openedOrder = useSelector(getOpenedOrder);
@@ -24,13 +24,11 @@ function OrderTableModalHeader({ isModalActiveSetter, order }) {
 
   const handleCloseButtonClick = () => {
     dispatch(clearSelection());
-    isModalActiveSetter(false);
   };
 
   const handleClearChangesClick = () => {
     dispatch(clearSelection());
     setIsSavingDropdownActive(false);
-    isModalActiveSetter(false);
   };
 
   const handleCloseCancelClick = () => {
@@ -86,4 +84,4 @@ function OrderTableModalHeader({ isModalActiveSetter, order }) {
   );
 }
 
-export default OrderTableModalHeader;
+export default ModalHeader;

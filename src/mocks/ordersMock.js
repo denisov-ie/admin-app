@@ -1,27 +1,5 @@
 const initialState = [
   {
-    id: 0,
-    name: "Воробьева Алиса Гордеевна",
-    date: "23.06.2022, 09:13",
-    status: "confirmed",
-    amount: 29422,
-    orderNumber: 12403,
-    level: "expert",
-    products: [
-      {
-        article: "#17197",
-        name: "Генератор",
-        price: 14030,
-      },
-      {
-        article: "#19338",
-        name: "Кусторез",
-        price: 15392,
-      },
-    ],
-    positionCount: 2,
-  },
-  {
     id: 1,
     name: "Никитин Арсений Платонович",
     date: "30.06.2021, 10:19",
@@ -10446,6 +10424,28 @@ const initialState = [
       },
     ],
     positionCount: 8,
+  },
+  {
+    id: 300,
+    name: "Воробьева Алиса Гордеевна",
+    date: "23.06.2022, 09:13",
+    status: "confirmed",
+    amount: 29422,
+    orderNumber: 12403,
+    level: "expert",
+    products: [
+      {
+        article: "#17197",
+        name: "Генератор",
+        price: 14030,
+      },
+      {
+        article: "#19338",
+        name: "Кусторез",
+        price: 15392,
+      },
+    ],
+    positionCount: 2,
   },
 ];
 

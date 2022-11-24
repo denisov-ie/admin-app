@@ -7,7 +7,10 @@ import styles from "../OrderTable.module.css";
 function OrderTableRow({ order, onChange, onClick, checked, expanded }) {
   return (
     <TableRow highlighted={checked || expanded} onClick={onClick}>
-      <TableCell className={styles.checkbox}>
+      <TableCell
+        className={styles.checkbox}
+        onClick={(e) => e.stopPropagation()}
+      >
         <label className={styles.checkboxArea}>
           <Checkbox
             id={order.id}
