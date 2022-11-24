@@ -1,0 +1,28 @@
+.article {
+  min-width: 6rem;
+}
+
+.name {
+  min-width: 14.5rem;
+}
+
+.price {
+  min-width: 6rem;
+}
+
+.tableFooter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: var(--color-day-black, var(--color-night-black));
+}
+
+.amount {
+  margin-right: 0.5rem;
+}
+
+.canceled {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

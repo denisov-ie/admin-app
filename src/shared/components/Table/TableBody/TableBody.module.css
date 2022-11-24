@@ -1,0 +1,24 @@
+._ {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: auto;
+}
+
+._::-webkit-scrollbar {
+  width: 0.75rem;
+}
+
+._::-webkit-scrollbar-track {
+  border-radius: 0.5rem;
+  border: 0.25rem solid transparent;
+  background-clip: padding-box;
+  background-color: var(--color-scrollbar-track);
+}
+
+._::-webkit-scrollbar-thumb {
+  border-radius: 0.5rem;
+  border: 0.25rem solid transparent;
+  background-clip: padding-box;
+  background-color: var(--color-scrollbar-thumb);
+}

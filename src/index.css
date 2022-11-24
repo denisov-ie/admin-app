@@ -12,6 +12,9 @@
   --color-green: #0fb864;
   --color-day-shade: rgba(0, 0, 0, 0.15);
   --dropdown-shadow: rgba(0, 0, 0, 0.1);
+  --form-shadow-light: rgba(0, 0, 0, 0.1);
+  --form-shadow-medium: rgba(0, 0, 0, 0.15);
+  --form-shadow-dark: rgba(0, 0, 0, 0.2);
   --color-scrollbar-thumb: rgba(0, 0, 0, 0.34);
   --color-scrollbar-track: rgba(0, 0, 0, 0.1);
 }

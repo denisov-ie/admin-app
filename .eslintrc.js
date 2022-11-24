@@ -27,7 +27,7 @@ module.exports = {
     "no-restricted-syntax": 0,
     "no-param-reassign": [
       "error",
-      { props: true, ignorePropertyModificationsFor: ["state", "orders"] },
+      { props: true, ignorePropertyModificationsFor: ["state"] },
     ],
   },
   settings: {
