@@ -4,8 +4,8 @@ import { ICON_TYPE as icon } from "shared/components/Icon";
 import { STATUSES as status } from "features/OrderPage/modules/Status";
 import { Dropdown, DropdownListItem } from "shared/components/Dropdown";
 import Radio from "shared/components/Radio";
-import OrderTableModalBodyTable from "features/OrderPage/modules/OrderTable/OrderTableModal/OrderTableModalBody/OrderTableModalBodyTable";
-import styles from "./OrderTableModalBody.module.css";
+import OrderSpecificationTable from "features/OrderPage/modules/Modal/ModalBody/OrderSpecificationTable";
+import styles from "./ModalBody.module.css";
 
 const LOYALTY_LEVEL_MAP = {
   novice: "Новичек",
@@ -13,7 +13,7 @@ const LOYALTY_LEVEL_MAP = {
   expert: "Эксперт",
 };
 
-function OrderTableModalBody({ orderState, codeState, errorsState }) {
+function ModalBody({ orderState, codeState, errorsState }) {
   const [order, setOrder] = orderState;
 
   const [code, setCode] = codeState;
@@ -71,7 +71,7 @@ function OrderTableModalBody({ orderState, codeState, errorsState }) {
           onChange={handleNameChange}
           onClear={handleNameClearClick}
         />
-        <OrderTableModalBodyTable order={order} />
+        <OrderSpecificationTable order={order} />
         <Input
           value={LOYALTY_LEVEL_MAP[order.level]}
           label="Уровень лояльности"
@@ -117,4 +117,4 @@ function OrderTableModalBody({ orderState, codeState, errorsState }) {
   );
 }
 
-export default OrderTableModalBody;
+export default ModalBody;

@@ -1,12 +1,12 @@
-import OrderTableModalHeader from "features/OrderPage/modules/OrderTable/OrderTableModal/OrderTableModalHeader";
-import OrderTableModalBody from "features/OrderPage/modules/OrderTable/OrderTableModal/OrderTableModalBody";
-import OrderTableModalFooter from "features/OrderPage/modules/OrderTable/OrderTableModal/OrderTableModalFooter";
+import ModalHeader from "features/OrderPage/modules/Modal/ModalHeader";
+import ModalBody from "features/OrderPage/modules/Modal/ModalBody";
+import ModalFooter from "features/OrderPage/modules/Modal/ModalFooter";
 import { useSelector } from "react-redux";
 import { getOpenedOrder } from "features/OrderPage/model/selectors";
 import { useState } from "react";
-import styles from "./OrderTableModal.module.css";
+import styles from "./Modal.module.css";
 
-function OrderTableModal({ isModalActiveSetter }) {
+function Modal() {
   const openedOrder = useSelector(getOpenedOrder);
 
   const [order, setOrder] = useState({ ...openedOrder });
@@ -23,24 +23,20 @@ function OrderTableModal({ isModalActiveSetter }) {
   return (
     <div className={styles._}>
       <div className={styles.orderForm}>
-        <OrderTableModalHeader
-          isModalActiveSetter={isModalActiveSetter}
-          order={order}
-        />
-        <OrderTableModalBody
+        <ModalHeader order={order} />
+        <ModalBody
           orderState={[order, setOrder]}
           codeState={[code, setCode]}
           errorsState={[errors, setErrors]}
         />
-        <OrderTableModalFooter
+        <ModalFooter
           order={order}
           code={code}
           errorsState={[errors, setErrors]}
-          isModalActiveSetter={isModalActiveSetter}
         />
       </div>
     </div>
   );
 }
 
-export default OrderTableModal;
+export default Modal;

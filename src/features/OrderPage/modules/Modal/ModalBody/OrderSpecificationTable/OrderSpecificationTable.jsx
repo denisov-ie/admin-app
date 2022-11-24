@@ -8,9 +8,9 @@ import {
   TableRow,
 } from "shared/components/Table";
 import setRoubleFormat from "shared/utils/setRoubleFormat";
-import styles from "./OrderTableModalBodyTable.module.css";
+import styles from "./OrderSpecificationTable.module.css";
 
-function OrderTableModalBodyTable({ order }) {
+function OrderSpecificationTable({ order }) {
   return (
     <Table>
       <TableHeader>
@@ -21,7 +21,7 @@ function OrderTableModalBodyTable({ order }) {
       <TableBody>
         {order.products.length === 0 && (
           <TableRow className={styles.canceled}>
-            В заказе отсутствуют товары
+            Спецификация не содержит позиций
           </TableRow>
         )}
         {order.products.map((product) => (
@@ -40,4 +40,4 @@ function OrderTableModalBodyTable({ order }) {
   );
 }
 
-export default OrderTableModalBodyTable;
+export default OrderSpecificationTable;
